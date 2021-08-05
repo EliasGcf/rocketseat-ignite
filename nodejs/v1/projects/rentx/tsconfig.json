@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "rootDir": "./src",
+    "strict": true,
+    "baseUrl": "src",
+    "paths": {
+      "@migrations/*": ["shared/infra/typeorm/migrations/*"],
+      "@config/*": ["config/*"],
+      "@modules/*": ["modules/*"],
+      "@shared/*": ["shared/*"],
+      "@utils/*": ["utils/*"],
+      "swaggerFile": ["swagger.json"]
+    },
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "skipLibCheck": true,
+    "strictPropertyInitialization": false,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true
+  }
+}
