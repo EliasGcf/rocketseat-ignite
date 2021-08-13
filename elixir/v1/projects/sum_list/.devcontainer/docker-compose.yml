@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  elixir:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        # Elixir Version: 1.9, 1.10, 1.10.4, ...
+        VARIANT: "1.11.3"
+        # Phoenix Version: 1.4.17, 1.5.4, ...
+        # PHOENIX_VERSION: "1.5.7"
+        # Node Version: 10, 11, ...
+        NODE_VERSION: "14"
+
+    volumes:
+      - ..:/workspace:cached
+
+    # Overrides default command so things don't shut down after the process ends.
+    command: sleep infinity
