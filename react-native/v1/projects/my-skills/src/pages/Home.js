@@ -1,40 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
-  StyleSheet,
-  TextInput,
   Platform,
-  TouchableOpacity
+  TextInput,
+  StyleSheet,
+  TouchableOpacity,
 } from 'react-native';
 
 export function Home() {
+  const [newSkill, setNewSkill] = useState('');
+  const [skills, setSkills] = useState([]);
+
+  function handleAddNewSkill() {
+    setSkills(oldState => [...oldState, newSkill]);
+    setNewSkill('');
+  }
+
   return (
-      <View style={styles.container}>
-        <Text style={styles.title}>
-          Welcome, Rodrigo
-        </Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>Welcome, Rodrigo</Text>
 
-        <TextInput
-          style={styles.input}
-          placeholder="New skill"
-          placeholderTextColor="#555"
-        />
+      <TextInput
+        value={newSkill}
+        style={styles.input}
+        placeholder="New skill"
+        placeholderTextColor="#555"
+        onChangeText={setNewSkill}
+      />
 
-        <TouchableOpacity
-          style={styles.button}
-          activeOpacity={.7}
-        >
-          <Text style={styles.buttonText}>Add</Text>
-        </TouchableOpacity>
+      <TouchableOpacity
+        activeOpacity={0.7}
+        style={styles.button}
+        onPress={handleAddNewSkill}
+      >
+        <Text style={styles.buttonText}>Add</Text>
+      </TouchableOpacity>
 
-        <Text style={[styles.title, { marginTop: 50 }]}>
-          My Skills
-        </Text>
+      <Text style={[styles.title, { marginVertical: 50 }]}>My Skills</Text>
 
-
-      </View>
-  )
+      {skills.map((skill, index) => {
+        return (
+          <TouchableOpacity key={index} style={styles.buttonSkill} activeOpacity={0.7}>
+            <Text style={styles.textSkill}>{skill}</Text>
+          </TouchableOpacity>
+        );
+      })}
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -48,7 +61,7 @@ const styles = StyleSheet.create({
   title: {
     color: '#FFF',
     fontSize: 24,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   input: {
     backgroundColor: '#1F1E25',
@@ -56,18 +69,30 @@ const styles = StyleSheet.create({
     fontSize: 18,
     padding: Platform.OS === 'ios' ? 15 : 10,
     marginTop: 30,
-    borderRadius: 7
+    borderRadius: 7,
   },
   button: {
     backgroundColor: '#A370F7',
     padding: 15,
     borderRadius: 7,
     alignItems: 'center',
-    marginTop: 20
+    marginTop: 20,
   },
   buttonText: {
     color: '#FFF',
     fontSize: 17,
     fontWeight: 'bold',
-  }
+  },
+  buttonSkill: {
+    backgroundColor: '#1F1E25',
+    padding: 15,
+    borderRadius: 50,
+    alignItems: 'center',
+    marginBottom: 12
+  },
+  textSkill: {
+    color: '#FFF',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
 });
