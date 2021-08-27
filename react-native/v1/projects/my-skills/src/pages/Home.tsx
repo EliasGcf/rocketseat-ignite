@@ -4,8 +4,10 @@ import { View, Text, StyleSheet, FlatList } from 'react-native';
 import { Button } from '../components/Button';
 import { SkillCard } from '../components/SkillCard';
 import { TextInput } from '../components/TextInput';
+import { HeaderSkillList } from '../components/HeaderSkillList';
 
 import { useAsyncStorage } from '../hooks/useAsyncStorage';
+import { HeaderGreeting } from '../components/HeaderGreeting';
 
 type Skill = {
   id: string;
@@ -50,10 +52,19 @@ export function Home() {
     setInputHasError(false);
   }
 
+  async function handleTrashButton() {
+    setSkills([]);
+  }
+
+  async function handleLogoutButton() {
+    setSkills([]);
+    setUsername('');
+  }
+
   if (!username) {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>Welcome, {newUsername}</Text>
+        <HeaderGreeting name={newUsername} showLogoutButton={false} />
 
         <TextInput
           value={newUsername}
@@ -70,7 +81,11 @@ export function Home() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome, {username} 👋</Text>
+      <HeaderGreeting
+        name={`${username} 👋`}
+        showLogoutButton
+        onLogoutPress={handleLogoutButton}
+      />
 
       <TextInput
         value={newSkill}
@@ -82,7 +97,10 @@ export function Home() {
 
       <Button text="Add" style={{ marginTop: 20 }} onPress={handleAddNewSkill} />
 
-      <Text style={[styles.title, { marginTop: 48, marginBottom: 24 }]}>My Skills</Text>
+      <HeaderSkillList
+        showTrashIcon={!!skills.length}
+        onPressTrashIcon={handleTrashButton}
+      />
 
       <FlatList
         data={skills}
