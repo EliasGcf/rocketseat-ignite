@@ -14,8 +14,11 @@ type Skill = {
 
 export function Home() {
   const [newSkill, setNewSkill] = useState('');
-  const [skills, setSkills] = useAsyncStorage<Skill[]>('@my-skills:skills', []);
   const [inputHasError, setInputHasError] = useState(false);
+  const [skills, setSkills] = useAsyncStorage<Skill[]>('@my-skills:skills', []);
+
+  const [newUsername, setNewUsername] = useState('');
+  const [username, setUsername] = useAsyncStorage('@my-skills:username', '');
 
   function handleAddNewSkill() {
     if (!newSkill) {
@@ -37,9 +40,37 @@ export function Home() {
     setNewSkill(text);
   }
 
+  function handleAddNewUsername() {
+    if (!newUsername) {
+      setInputHasError(true);
+      return;
+    }
+
+    setUsername(newUsername);
+    setInputHasError(false);
+  }
+
+  if (!username) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.title}>Welcome, {newUsername}</Text>
+
+        <TextInput
+          value={newUsername}
+          hasError={inputHasError}
+          style={{ marginTop: 20 }}
+          placeholder="How can we call you?"
+          onChangeText={setNewUsername}
+        />
+
+        <Button text="Save" style={{ marginTop: 20 }} onPress={handleAddNewUsername} />
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome, Rodrigo 👋</Text>
+      <Text style={styles.title}>Welcome, {username} 👋</Text>
 
       <TextInput
         value={newSkill}

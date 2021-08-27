@@ -24,6 +24,7 @@ export function useAsyncStorage<S>(key: string, initialValue: S):  Response<S> {
   useEffect(() => {
     async function loadStoredValue() {
       try {
+        // AsyncStorage.clear()
         const value = await AsyncStorage.getItem(key);
 
         if (!value) return;
