@@ -13,20 +13,20 @@ export function Home() {
   function handleAddNewSkill() {
     if (!newSkill) return;
 
-    setSkills([...skills, newSkill]);
+    setSkills(oldState => [...oldState, newSkill]);
     setNewSkill('');
   }
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome, Rodrigo</Text>
+      <Text style={styles.title}>Welcome, Rodrigo 👋</Text>
 
       <TextInput
         value={newSkill}
         style={styles.input}
         placeholder="New skill"
-        placeholderTextColor="#555"
         onChangeText={setNewSkill}
+        placeholderTextColor="#555"
       />
 
       <Button text="Add" style={{ marginTop: 20 }} onPress={handleAddNewSkill} />
