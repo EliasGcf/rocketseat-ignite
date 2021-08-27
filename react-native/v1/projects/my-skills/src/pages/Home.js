@@ -4,14 +4,16 @@ import { View, Text, Platform, TextInput, StyleSheet, FlatList } from 'react-nat
 import { Button } from '../components/Button';
 import { SkillCard } from '../components/SkillCard';
 
+import { useAsyncStorage } from '../hooks/useAsyncStorage';
+
 export function Home() {
   const [newSkill, setNewSkill] = useState('');
-  const [skills, setSkills] = useState([]);
+  const [skills, setSkills] = useAsyncStorage('@my-skills:skills', []);
 
   function handleAddNewSkill() {
     if (!newSkill) return;
 
-    setSkills(oldState => [...oldState, newSkill]);
+    setSkills([...skills, newSkill]);
     setNewSkill('');
   }
 
