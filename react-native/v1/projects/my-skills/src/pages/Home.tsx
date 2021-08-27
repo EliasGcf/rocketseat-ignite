@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, Platform, TextInput, StyleSheet, FlatList } from 'react-native';
+import { View, Text, StyleSheet, FlatList } from 'react-native';
 
 import { Button } from '../components/Button';
 import { SkillCard } from '../components/SkillCard';
+import { TextInput } from '../components/TextInput';
 
 import { useAsyncStorage } from '../hooks/useAsyncStorage';
 
@@ -14,9 +15,13 @@ type Skill = {
 export function Home() {
   const [newSkill, setNewSkill] = useState('');
   const [skills, setSkills] = useAsyncStorage<Skill[]>('@my-skills:skills', []);
+  const [inputHasError, setInputHasError] = useState(false);
 
   function handleAddNewSkill() {
-    if (!newSkill) return;
+    if (!newSkill) {
+      setInputHasError(true);
+      return;
+    }
 
     const newData = {
       id: String(new Date().getTime()),
@@ -24,7 +29,12 @@ export function Home() {
     };
 
     setSkills(oldState => [...oldState, newData]);
+    setInputHasError(false);
     setNewSkill('');
+  }
+
+  function handleInputChange(text: string) {
+    setNewSkill(text);
   }
 
   return (
@@ -33,10 +43,10 @@ export function Home() {
 
       <TextInput
         value={newSkill}
-        style={styles.input}
         placeholder="New skill"
-        onChangeText={setNewSkill}
-        placeholderTextColor="#555"
+        style={{ marginTop: 20 }}
+        hasError={inputHasError}
+        onChangeText={handleInputChange}
       />
 
       <Button text="Add" style={{ marginTop: 20 }} onPress={handleAddNewSkill} />
@@ -65,13 +75,5 @@ const styles = StyleSheet.create({
     color: '#FFF',
     fontSize: 24,
     fontWeight: 'bold',
-  },
-  input: {
-    backgroundColor: '#1F1E25',
-    color: '#FFF',
-    fontSize: 18,
-    padding: Platform.OS === 'ios' ? 15 : 10,
-    marginTop: 30,
-    borderRadius: 7,
   },
 });
