@@ -1,7 +1,12 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, Dispatch, SetStateAction } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export function useAsyncStorage(key, initialValue = '') {
+type Response<T> = [
+  T,
+  Dispatch<SetStateAction<T>>,
+];
+
+export function useAsyncStorage<S>(key: string, initialValue: S):  Response<S> {
   const [storedValue, setStoredValue] = useState(initialValue);
 
   const setValueAsync = useCallback(async value => {

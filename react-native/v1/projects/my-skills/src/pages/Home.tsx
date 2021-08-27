@@ -6,14 +6,24 @@ import { SkillCard } from '../components/SkillCard';
 
 import { useAsyncStorage } from '../hooks/useAsyncStorage';
 
+type Skill = {
+  id: string;
+  name: string;
+};
+
 export function Home() {
   const [newSkill, setNewSkill] = useState('');
-  const [skills, setSkills] = useAsyncStorage('@my-skills:skills', []);
+  const [skills, setSkills] = useAsyncStorage<Skill[]>('@my-skills:skills', []);
 
   function handleAddNewSkill() {
     if (!newSkill) return;
 
-    setSkills(oldState => [...oldState, newSkill]);
+    const newData = {
+      id: String(new Date().getTime()),
+      name: newSkill,
+    };
+
+    setSkills(oldState => [...oldState, newData]);
     setNewSkill('');
   }
 
@@ -35,10 +45,10 @@ export function Home() {
 
       <FlatList
         data={skills}
-        keyExtractor={item => item}
+        keyExtractor={item => item.id}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 24 }}
-        renderItem={({ item: skill }) => <SkillCard skill={skill} />}
+        renderItem={({ item: skill }) => <SkillCard name={skill.name} />}
       />
     </View>
   );
@@ -48,7 +58,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#121015',
-    paddingHorizontal: 20,
     paddingTop: 70,
     paddingHorizontal: 30,
   },
