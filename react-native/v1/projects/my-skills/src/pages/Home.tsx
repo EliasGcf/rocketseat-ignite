@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { View, StyleSheet, FlatList, StatusBar } from 'react-native';
 
 import { Button } from '../components/Button';
 import { SkillCard } from '../components/SkillCard';
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#121015',
-    paddingTop: 70,
+    paddingTop: StatusBar.currentHeight ? StatusBar.currentHeight + 32 : 56,
     paddingHorizontal: 30,
   },
   title: {
