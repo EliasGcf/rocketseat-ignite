@@ -13,4 +13,12 @@ export const theme = {
 
     background: '#F0F2F5',
   },
+
+  fonts: {
+    poppins: {
+      regular: 'Poppins_400Regular',
+      medium: 'Poppins_500Medium',
+      bold: 'Poppins_700Bold',
+    },
+  },
 } as const;
