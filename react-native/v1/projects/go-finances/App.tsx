@@ -1,5 +1,6 @@
 import React from 'react';
-import { Dashboard } from './src/screens/Dashboard';
+
+import { Dashboard } from '@screens/Dashboard';
 
 export default function App() {
   return <Dashboard />;
