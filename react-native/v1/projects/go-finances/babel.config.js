@@ -10,6 +10,7 @@ module.exports = function (api) {
           extensions: ['.ts', '.tsx'],
           alias: {
             '@screens': './src/screens',
+            '@global': './src/global',
           },
         },
       ],
