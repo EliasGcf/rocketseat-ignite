@@ -15,6 +15,7 @@ export const Header = styled.View`
   width: 100%;
   padding: 28px 0 0 0;
   background: ${({ theme }) => theme.colors.primary};
+  height: 278px;
 
   ${isIphoneX() &&
   css`
@@ -52,9 +53,15 @@ export const UserName = styled.Text`
   color: #fff;
 `;
 
-export const PowerIcon = styled(Feather).attrs(props => {
-  return { name: 'power' };
-})`
+export const PowerIcon = styled(Feather).attrs({ name: 'power' })`
   color: ${({ theme }) => theme.colors.secondary};
   font-size: 24px;
+`;
+
+export const HighlightCards = styled.ScrollView.attrs({
+  horizontal: true,
+  showsHorizontalScrollIndicator: false,
+  contentContainerStyle: { paddingHorizontal: 24 },
+})`
+  margin-top: -148px;
 `;

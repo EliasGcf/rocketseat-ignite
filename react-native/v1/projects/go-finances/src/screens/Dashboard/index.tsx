@@ -1,6 +1,8 @@
 import React from 'react';
 import { useTheme } from 'styled-components';
-import { StatusBar, TouchableOpacity } from 'react-native';
+import { ScrollView, StatusBar, TouchableOpacity } from 'react-native';
+
+import { HighlightCard } from '@components/HighlightCard';
 
 import {
   Container,
@@ -11,6 +13,7 @@ import {
   UserName,
   UserTextContainer,
   PowerIcon,
+  HighlightCards,
 } from './styles';
 
 export function Dashboard() {
@@ -33,6 +36,23 @@ export function Dashboard() {
           </TouchableOpacity>
         </UserInfo>
       </Header>
+
+      <HighlightCards>
+        <HighlightCard
+          type="income"
+          hasMarginRight
+          data={{ value: 17400, description: 'Última entrada dia 13 de abril' }}
+        />
+        <HighlightCard
+          type="outcome"
+          hasMarginRight
+          data={{ value: 1259, description: 'Última saída dia 03 de abril' }}
+        />
+        <HighlightCard
+          type="total"
+          data={{ value: 17400, description: '01 à 16 de abril' }}
+        />
+      </HighlightCards>
     </Container>
   );
 }
