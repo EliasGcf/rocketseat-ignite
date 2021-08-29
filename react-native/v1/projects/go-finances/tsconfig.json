@@ -1,10 +1,9 @@
 {
   "compilerOptions": {
     "strict": true,
-    "baseUrl": "./",
+    "baseUrl": "./src",
     "paths": {
-      "@screens/*": ["./src/screens/*"],
-      "@global/*": ["./src/global/*"]
+      "@*": ["./*"]
     }
   },
   "extends": "expo/tsconfig.base"
