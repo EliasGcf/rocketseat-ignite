@@ -3,6 +3,8 @@ import { TouchableOpacity } from 'react-native';
 
 import { HighlightCard } from '@components/HighlightCard';
 
+import { formatCurrency } from '@utils/formatCurrency';
+
 import {
   Container,
   Header,
@@ -39,16 +41,22 @@ export function Dashboard() {
           <HighlightCard
             type="income"
             hasMarginRight
-            data={{ value: 17400, description: 'Última entrada dia 13 de abril' }}
+            data={{
+              value: formatCurrency(17400),
+              description: 'Última entrada dia 13 de abril',
+            }}
           />
           <HighlightCard
             type="outcome"
             hasMarginRight
-            data={{ value: 1259, description: 'Última saída dia 03 de abril' }}
+            data={{
+              value: formatCurrency(1259),
+              description: 'Última saída dia 03 de abril',
+            }}
           />
           <HighlightCard
             type="total"
-            data={{ value: 17400, description: '01 à 16 de abril' }}
+            data={{ value: formatCurrency(17400), description: '01 à 16 de abril' }}
           />
         </HighlightCards>
       </HighlightCardsWrapper>

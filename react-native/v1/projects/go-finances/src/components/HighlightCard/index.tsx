@@ -14,7 +14,7 @@ import {
 } from './styles';
 
 type HighlightCardData = {
-  value: number;
+  value: string;
   description: string;
 };
 
@@ -51,7 +51,7 @@ export function HighlightCard({
       </Header>
 
       <Content>
-        <Value type={type}>R$ {data.value}</Value>
+        <Value type={type}>{data.value}</Value>
         <LastTransaction type={type}>{data.description}</LastTransaction>
       </Content>
     </Container>
