@@ -1,10 +1,10 @@
 import { Feather, Ionicons } from '@expo/vector-icons';
 import styled, { css } from 'styled-components/native';
 
-import { HighlightCardType } from './index';
+import { HighlightCardProps } from './index';
 
 type ContainerProps = {
-  type: HighlightCardType;
+  type: HighlightCardProps['type'];
   hasMarginRight: boolean;
 };
 
@@ -30,7 +30,7 @@ export const Header = styled.View`
 `;
 
 type TitleProps = {
-  type: HighlightCardType;
+  type: HighlightCardProps['type'];
 };
 
 export const Title = styled.Text<TitleProps>`
@@ -43,6 +43,13 @@ export const Title = styled.Text<TitleProps>`
     css`
       color: ${({ theme }) => theme.colors.shape};
     `}
+`;
+
+export const IconButton = styled.TouchableOpacity.attrs({
+  activeOpacity: 0.7,
+})`
+  height: 40px;
+  width: 40px;
 `;
 
 export const ArrowUpIcon = styled(Ionicons).attrs({
@@ -71,7 +78,7 @@ export const Content = styled.View`
 `;
 
 type ValueProps = {
-  type: HighlightCardType;
+  type: HighlightCardProps['type'];
 };
 
 export const Value = styled.Text<ValueProps>`
@@ -87,7 +94,7 @@ export const Value = styled.Text<ValueProps>`
 `;
 
 type LastTransactionProps = {
-  type: HighlightCardType;
+  type: HighlightCardProps['type'];
 };
 
 export const LastTransaction = styled.Text<LastTransactionProps>`

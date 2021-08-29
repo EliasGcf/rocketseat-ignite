@@ -58,10 +58,13 @@ export const PowerIcon = styled(Feather).attrs({ name: 'power' })`
   font-size: 24px;
 `;
 
+export const HighlightCardsWrapper = styled.View`
+  height: 200px;
+  margin-top: -148px;
+`;
+
 export const HighlightCards = styled.ScrollView.attrs({
   horizontal: true,
   showsHorizontalScrollIndicator: false,
   contentContainerStyle: { paddingHorizontal: 24 },
-})`
-  margin-top: -148px;
-`;
+})``;

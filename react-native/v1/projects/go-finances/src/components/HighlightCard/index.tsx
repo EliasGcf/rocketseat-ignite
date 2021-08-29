@@ -10,17 +10,17 @@ import {
   LastTransaction,
   ArrowDownIcon,
   DollarIcon,
+  IconButton,
 } from './styles';
 
-export type HighlightCardType = 'income' | 'outcome' | 'total';
 type HighlightCardData = {
   value: number;
   description: string;
 };
 
-type HighlightCardProps = {
+export type HighlightCardProps = {
   data: HighlightCardData;
-  type: HighlightCardType;
+  type: 'income' | 'outcome' | 'total';
   hasMarginRight?: boolean;
 };
 
@@ -45,7 +45,9 @@ export function HighlightCard({
     <Container type={type} hasMarginRight={hasMarginRight}>
       <Header>
         <Title type={type}>{cardTitle[type]}</Title>
-        <CardIcon />
+        <IconButton style={{ height: 40 }} activeOpacity={0.7}>
+          <CardIcon />
+        </IconButton>
       </Header>
 
       <Content>

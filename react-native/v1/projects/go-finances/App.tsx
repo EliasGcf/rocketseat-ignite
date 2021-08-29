@@ -1,5 +1,6 @@
 import React from 'react';
 import { useFonts } from 'expo-font';
+import { StatusBar } from 'react-native';
 import AppLoading from 'expo-app-loading';
 import { ThemeProvider } from 'styled-components';
 import {
@@ -25,6 +26,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
+      <StatusBar barStyle="light-content" backgroundColor={theme.colors.primary} />
       <Dashboard />
     </ThemeProvider>
   );
