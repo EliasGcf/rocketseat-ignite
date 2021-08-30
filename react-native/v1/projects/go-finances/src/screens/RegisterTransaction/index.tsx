@@ -1,8 +1,9 @@
 import React from 'react';
+import { View } from 'react-native';
 
-import { Container, Content, Header, HeaderTitle } from './styles';
+import { Button, ButtonText, Container, Content, Header, HeaderTitle } from './styles';
 
-import { Input } from '@components/Input/Index';
+import { Input } from '@components/Input';
 
 export function RegisterTransaction() {
   return (
@@ -12,8 +13,14 @@ export function RegisterTransaction() {
       </Header>
 
       <Content>
-        <Input style={{ marginBottom: 8 }} placeholder="Nome" />
-        <Input placeholder="Preço" />
+        <View>
+          <Input style={{ marginBottom: 8 }} placeholder="Nome" />
+          <Input placeholder="Preço" />
+        </View>
+
+        <Button>
+          <ButtonText>Enviar</ButtonText>
+        </Button>
       </Content>
     </Container>
   );

@@ -7,8 +7,10 @@ export const Container = styled.View`
 `;
 
 export const Content = styled.View`
+  flex: 1;
+  margin: 24px 0 24px 0;
   padding: 0 24px 0 24px;
-  margin: 24px 0 0 0;
+  justify-content: space-between;
 `;
 
 export const Header = styled.View`
@@ -29,4 +31,19 @@ export const HeaderTitle = styled.Text`
   font-size: 18px;
   color: ${({ theme }) => theme.colors.shape};
   font-family: ${({ theme }) => theme.fonts.poppins.regular};
+`;
+
+export const Button = styled.TouchableOpacity.attrs({ activeOpacity: 0.7 })`
+  height: 56px;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+  background: ${({ theme }) => theme.colors.secondary};
+`;
+
+export const ButtonText = styled.Text`
+  font-size: 14px;
+  line-height: ${14 * 1.4}px;
+  color: ${({ theme }) => theme.colors.shape};
+  font-family: ${({ theme }) => theme.fonts.poppins.medium};
 `;
