@@ -20,7 +20,7 @@ export const Title = styled.Text`
 `;
 
 type AmountProps = {
-  type: TransactionCardProps['type'];
+  type: TransactionCardProps['data']['type'];
 };
 
 export const Amount = styled.Text<AmountProps>`

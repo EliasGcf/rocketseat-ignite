@@ -33,6 +33,11 @@ export const HeaderTitle = styled.Text`
   font-family: ${({ theme }) => theme.fonts.poppins.regular};
 `;
 
+export const TypeButtonsWrapper = styled.View`
+  margin: 16px 0 0 0;
+  flex-direction: row;
+`;
+
 export const Button = styled.TouchableOpacity.attrs({ activeOpacity: 0.7 })`
   height: 56px;
   border-radius: 5px;
