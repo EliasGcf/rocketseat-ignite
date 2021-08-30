@@ -1,5 +1,6 @@
 import { Feather } from '@expo/vector-icons';
 import styled, { css } from 'styled-components/native';
+import { ScrollView } from 'react-native-gesture-handler';
 import { isIphoneX, getStatusBarHeight } from 'react-native-iphone-x-helper';
 
 const Row = styled.View`
@@ -10,7 +11,7 @@ export const Container = styled.View`
   width: 100%;
   padding: 28px 0 0 0;
   background: ${({ theme }) => theme.colors.primary};
-  height: 278px;
+  margin: 0 0 52px 0;
 
   ${isIphoneX() &&
   css`
@@ -62,7 +63,7 @@ export const HighlightCardsWrapper = styled.View`
   margin: 24px 0 -52px 0;
 `;
 
-export const HighlightCards = styled.ScrollView.attrs({
+export const HighlightCards = styled(ScrollView).attrs({
   horizontal: true,
   showsHorizontalScrollIndicator: false,
   contentContainerStyle: { paddingHorizontal: 24 },
