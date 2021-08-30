@@ -17,6 +17,10 @@ import {
 export function RegisterTransaction() {
   const [transactionType, setTransactionType] = useState<'income' | 'outcome' | ''>('');
 
+  function handleChangeTransactionType(type: 'income' | 'outcome') {
+    setTransactionType(type);
+  }
+
   return (
     <Container>
       <Header>
@@ -32,13 +36,13 @@ export function RegisterTransaction() {
             <TransactionTypeButton
               type="income"
               isChecked={transactionType === 'income'}
-              onPress={() => setTransactionType('income')}
+              onPress={() => handleChangeTransactionType('income')}
             />
             <View style={{ width: 8 }} />
             <TransactionTypeButton
               type="outcome"
               isChecked={transactionType === 'outcome'}
-              onPress={() => setTransactionType('outcome')}
+              onPress={() => handleChangeTransactionType('outcome')}
             />
           </TypeButtonsWrapper>
         </View>
