@@ -12,6 +12,7 @@ import {
 import { theme } from '@global/styles/theme';
 
 import { Dashboard } from '@screens/Dashboard';
+import { RegisterTransaction } from '@screens/RegisterTransaction';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -27,7 +28,8 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.primary} />
-      <Dashboard />
+      {/* <Dashboard /> */}
+      <RegisterTransaction />
     </ThemeProvider>
   );
 }
