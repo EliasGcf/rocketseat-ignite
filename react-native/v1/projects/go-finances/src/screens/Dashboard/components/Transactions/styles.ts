@@ -1,4 +1,7 @@
+import { FlatList } from 'react-native';
 import styled from 'styled-components/native';
+
+import { Transaction } from './index';
 
 export const Container = styled.View`
   flex: 1;
@@ -12,3 +15,10 @@ export const TransactionsTitle = styled.Text`
   color: ${({ theme }) => theme.colors.title};
   font-family: ${({ theme }) => theme.fonts.poppins.regular};
 `;
+
+export const TransactionsList = styled(FlatList as new () => FlatList<Transaction>).attrs(
+  {
+    showsVerticalScrollIndicator: false,
+    contentContainerStyle: { paddingBottom: 32 },
+  },
+)``;

@@ -13,16 +13,24 @@ import {
 } from './styles';
 
 export type TransactionCardProps = {
-  type: 'income' | 'outcome';
-  containerStyle?: StyleProp<ViewStyle>;
+  data: {
+    type: 'income' | 'outcome';
+    date: string;
+    title: string;
+    amount: string;
+    category: string;
+  };
 };
 
-export function TransactionCard({ type, containerStyle }: TransactionCardProps) {
+export function TransactionCard({ data }: TransactionCardProps) {
   return (
-    <Container style={containerStyle}>
+    <Container>
       <View>
-        <Title>Desenvolvimento de site</Title>
-        <Amount type={type}>{type === 'outcome' && '- '}R$ 12.000,00</Amount>
+        <Title>{data.title}</Title>
+        <Amount type={data.type}>
+          {data.type === 'outcome' && '- '}
+          {data.amount}
+        </Amount>
       </View>
 
       <Footer>
@@ -30,8 +38,8 @@ export function TransactionCard({ type, containerStyle }: TransactionCardProps) 
           <FooterIcon />
         </IconButton>
 
-        <FooterText>Vendas</FooterText>
-        <FooterDate>12/04/2020</FooterDate>
+        <FooterText>{data.category}</FooterText>
+        <FooterDate>{data.date}</FooterDate>
       </Footer>
     </Container>
   );
