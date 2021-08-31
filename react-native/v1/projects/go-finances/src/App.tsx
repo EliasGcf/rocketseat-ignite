@@ -14,7 +14,7 @@ import { theme } from '@global/styles/theme';
 import { Dashboard } from '@screens/Dashboard';
 import { RegisterTransaction } from '@screens/RegisterTransaction';
 
-export default function App() {
+export function App() {
   const [fontsLoaded] = useFonts({
     Poppins_400Regular,
     Poppins_500Medium,
