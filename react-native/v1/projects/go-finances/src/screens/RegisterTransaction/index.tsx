@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
+import { useForm } from 'react-hook-form';
 
-import { Input } from '@components/Input';
+import { InputForm } from '@components/react-hook-form/Input';
 import { TransactionTypeButton } from '@components/TransactionTypeButton';
 
 import { CategoryPicker } from '@screens/RegisterTransaction/CategoryPicker';
@@ -16,11 +17,23 @@ import {
   TypeButtonsWrapper,
 } from './styles';
 
+type FormData = {
+  name: string;
+  amount: string;
+};
+
 export function RegisterTransaction() {
+  const { control, handleSubmit, formState } = useForm<FormData>();
+
   const [transactionType, setTransactionType] = useState<'income' | 'outcome' | ''>('');
+  const [category, setCategory] = useState('');
 
   function handleChangeTransactionType(type: 'income' | 'outcome') {
     setTransactionType(type);
+  }
+
+  async function handleAddTransaction(data: FormData) {
+    console.log({ ...data, type: transactionType, category });
   }
 
   return (
@@ -31,8 +44,22 @@ export function RegisterTransaction() {
 
       <Content>
         <View>
-          <Input style={{ marginBottom: 8 }} placeholder="Nome" />
-          <Input placeholder="Preço" />
+          <InputForm
+            name="name"
+            defaultValue=""
+            control={control}
+            placeholder="Nome"
+            style={{ marginBottom: 8 }}
+          />
+
+          <InputForm
+            name="amount"
+            defaultValue=""
+            control={control}
+            placeholder="Preço"
+            returnKeyType="done"
+            keyboardType="number-pad"
+          />
 
           <TypeButtonsWrapper>
             <TransactionTypeButton
@@ -49,11 +76,11 @@ export function RegisterTransaction() {
           </TypeButtonsWrapper>
 
           <View style={{ marginTop: 16 }}>
-            <CategoryPicker onPickerChange={value => console.log(value)} />
+            <CategoryPicker onPickerChange={setCategory} />
           </View>
         </View>
 
-        <Button>
+        <Button onPress={handleSubmit(handleAddTransaction)}>
           <ButtonText>Enviar</ButtonText>
         </Button>
       </Content>
