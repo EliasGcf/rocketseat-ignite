@@ -4,6 +4,8 @@ import { View } from 'react-native';
 import { Input } from '@components/Input';
 import { TransactionTypeButton } from '@components/TransactionTypeButton';
 
+import { CategoryPicker } from '@screens/RegisterTransaction/components/CategoryPicker';
+
 import {
   Button,
   ButtonText,
@@ -45,6 +47,10 @@ export function RegisterTransaction() {
               onPress={() => handleChangeTransactionType('outcome')}
             />
           </TypeButtonsWrapper>
+
+          <View style={{ marginTop: 16 }}>
+            <CategoryPicker onPickerChange={value => console.log(value)} />
+          </View>
         </View>
 
         <Button>
