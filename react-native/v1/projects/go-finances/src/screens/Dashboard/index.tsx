@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Header } from '@screens/Dashboard/components/Header';
-import { Transactions } from '@screens/Dashboard/components/Transactions';
+import { Header } from '@screens/Dashboard/Header';
+import { Transactions } from '@screens/Dashboard/Transactions';
 
 import { Container } from './styles';
 

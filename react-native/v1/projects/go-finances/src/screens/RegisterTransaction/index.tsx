@@ -4,7 +4,7 @@ import { View } from 'react-native';
 import { Input } from '@components/Input';
 import { TransactionTypeButton } from '@components/TransactionTypeButton';
 
-import { CategoryPicker } from '@screens/RegisterTransaction/components/CategoryPicker';
+import { CategoryPicker } from '@screens/RegisterTransaction/CategoryPicker';
 
 import {
   Button,
