@@ -8,6 +8,7 @@ import {
   Poppins_500Medium,
   Poppins_700Bold,
 } from '@expo-google-fonts/poppins';
+import { ToastProvider } from 'react-native-toast-notifications';
 
 import { theme } from '@global/styles/theme';
 
@@ -27,9 +28,18 @@ export function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <StatusBar barStyle="light-content" backgroundColor={theme.colors.primary} />
-      {/* <Dashboard /> */}
-      <RegisterTransaction />
+      <ToastProvider
+        offsetTop={50}
+        textStyle={{
+          color: theme.colors.shape,
+          fontFamily: theme.fonts.poppins.medium,
+        }}
+        successColor={theme.colors.success}
+      >
+        <StatusBar barStyle="light-content" backgroundColor={theme.colors.primary} />
+        {/* <Dashboard /> */}
+        <RegisterTransaction />
+      </ToastProvider>
     </ThemeProvider>
   );
 }

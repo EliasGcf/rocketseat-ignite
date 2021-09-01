@@ -14,6 +14,7 @@ export const TypeButtonsWrapper = styled.View`
 
 export const Button = styled.TouchableOpacity.attrs({ activeOpacity: 0.7 })`
   height: 56px;
+  margin: 16px 0 0 0;
   border-radius: 5px;
   align-items: center;
   justify-content: center;

@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useToast } from 'react-native-toast-notifications';
 
 import { InputForm } from '@components/react-hook-form/Input';
 import { TransactionTypeButton } from '@components/TransactionTypeButton';
@@ -22,6 +23,8 @@ const formSchemaValidation = yup.object().shape({
 });
 
 export function Form() {
+  const toast = useToast();
+
   const { control, handleSubmit, setFocus } = useForm<FormData>({
     resolver: yupResolver(formSchemaValidation),
   });
@@ -33,12 +36,36 @@ export function Form() {
     setTransactionType(type);
   }
 
-  async function handleAddTransaction(data: FormData) {
-    /**
-     * TODO: Validate if `transactionType` adn `category` are not empty
-     *   - use some toast library to show the error message
-     */
-    console.log({ ...data, type: transactionType, category });
+  async function handleAddTransaction(formData: FormData) {
+    toast.hideAll();
+
+    if (!transactionType) {
+      toast.show('Tipo de transação é obrigatório.', {
+        animationType: 'zoom-in',
+        placement: 'top',
+      });
+
+      return;
+    }
+
+    if (!category) {
+      toast.show('Categoria é obrigatório.', {
+        animationType: 'zoom-in',
+        placement: 'top',
+      });
+
+      return;
+    }
+
+    const data = { ...formData, type: transactionType, category };
+
+    toast.show('Transaction criada com sucesso.', {
+      animationType: 'zoom-in',
+      placement: 'top',
+      type: 'success',
+    });
+
+    console.log(data);
   }
 
   return (

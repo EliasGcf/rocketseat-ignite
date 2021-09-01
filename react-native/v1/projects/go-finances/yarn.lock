@@ -6040,6 +6040,11 @@ react-native-screens@~3.4.0:
   dependencies:
     warn-once "^0.1.0"
 
+react-native-toast-notifications@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-toast-notifications/-/react-native-toast-notifications-3.1.1.tgz#d1dbe8c557d476ec90527b02ebd774a86f0f24f2"
+  integrity sha512-svIM0Yth08WJHQZtCiHYvIK/MPygb0uTYG0uLur4SiWZPGigRPjreLaYgdux0YkKLxRmFk/dCYeldJHRbDlllw==
+
 react-native-unimodules@~0.14.5:
   version "0.14.6"
   resolved "https://registry.yarnpkg.com/react-native-unimodules/-/react-native-unimodules-0.14.6.tgz#5460a34d44e880909cb63d9bb4c4d77ff158bf0a"
