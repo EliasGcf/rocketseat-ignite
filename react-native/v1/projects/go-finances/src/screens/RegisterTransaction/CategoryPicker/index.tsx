@@ -63,6 +63,7 @@ export function CategoryPicker({ onPickerChange }: CategoryPickerProps) {
         };
       })}
       value={selectedCategory}
+      pickerProps={{ mode: 'dropdown' }}
       onValueChange={handlePickerChange}
       useNativeAndroidPickerStyle={false}
       placeholder={{ label: 'Categoria', value: '', color: theme.colors.text }}
