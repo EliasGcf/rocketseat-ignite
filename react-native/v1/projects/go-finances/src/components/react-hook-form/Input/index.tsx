@@ -14,9 +14,10 @@ export function InputForm({ name, control, defaultValue, ...rest }: InputFormPro
       name={name}
       control={control}
       defaultValue={defaultValue}
-      render={({ field: { value, onChange } }) => (
+      render={({ field: { value, onChange, ref } }) => (
         <Input
           {...rest}
+          ref={ref}
           value={value}
           onChangeText={onChange}
           defaultValue={defaultValue}

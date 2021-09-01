@@ -1,10 +1,12 @@
-import React from 'react';
-import { TextInputProps } from 'react-native';
+import React, { ForwardedRef, forwardRef } from 'react';
+import { TextInputProps, TextInput as RNTextInput } from 'react-native';
 
 import { TextInput } from './styles';
 
 export type InputProps = TextInputProps & {};
 
-export function Input({ ...rest }: InputProps) {
-  return <TextInput {...rest} />;
-}
+export const Input = forwardRef(
+  ({ ...rest }: InputProps, inputRef: ForwardedRef<RNTextInput>) => {
+    return <TextInput {...rest} ref={inputRef} />;
+  },
+);

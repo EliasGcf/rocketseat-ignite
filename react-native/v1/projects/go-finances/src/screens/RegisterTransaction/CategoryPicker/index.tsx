@@ -4,7 +4,7 @@ import { Feather } from '@expo/vector-icons';
 import RNPickerSelect from 'react-native-picker-select';
 
 import { categories } from '@utils/categories';
-import { Pressable, View } from 'react-native';
+import { View } from 'react-native';
 
 type CategoryPickerProps = {
   onPickerChange: (value: string) => void;
@@ -37,6 +37,8 @@ export function CategoryPicker({ onPickerChange }: CategoryPickerProps) {
   return (
     <RNPickerSelect
       style={{
+        chevronUp: { display: 'none' },
+        chevronDown: { display: 'none' },
         placeholder: {
           color: theme.colors.text,
         },

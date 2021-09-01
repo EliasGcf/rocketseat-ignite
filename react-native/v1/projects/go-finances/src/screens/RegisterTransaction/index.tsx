@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
-import { View } from 'react-native';
+import {
+  Keyboard,
+  KeyboardAvoidingView,
+  Platform,
+  TouchableWithoutFeedback,
+  View,
+} from 'react-native';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -30,7 +36,7 @@ const formSchemaValidation = yup.object().shape({
 });
 
 export function RegisterTransaction() {
-  const { control, handleSubmit } = useForm<FormData>({
+  const { control, handleSubmit, setFocus } = useForm<FormData>({
     resolver: yupResolver(formSchemaValidation),
   });
 
@@ -46,54 +52,63 @@ export function RegisterTransaction() {
   }
 
   return (
-    <Container>
-      <Header>
-        <HeaderTitle>Cadastro</HeaderTitle>
-      </Header>
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+    >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <Container>
+          <Header>
+            <HeaderTitle>Cadastro</HeaderTitle>
+          </Header>
 
-      <Content>
-        <View>
-          <InputForm
-            name="name"
-            defaultValue=""
-            control={control}
-            placeholder="Nome"
-            autoCapitalize="sentences"
-            style={{ marginBottom: 8 }}
-          />
+          <Content>
+            <View>
+              <InputForm
+                name="name"
+                defaultValue=""
+                control={control}
+                placeholder="Nome"
+                returnKeyType="next"
+                autoCapitalize="sentences"
+                style={{ marginBottom: 8 }}
+                onSubmitEditing={() => setFocus('amount')}
+              />
 
-          <InputForm
-            name="amount"
-            defaultValue=""
-            control={control}
-            placeholder="Preço"
-            returnKeyType="done"
-            keyboardType="decimal-pad"
-          />
+              <InputForm
+                name="amount"
+                defaultValue=""
+                control={control}
+                placeholder="Preço"
+                returnKeyType="done"
+                keyboardType="decimal-pad"
+              />
 
-          <TypeButtonsWrapper>
-            <TransactionTypeButton
-              type="income"
-              isChecked={transactionType === 'income'}
-              onPress={() => handleChangeTransactionType('income')}
-            />
-            <View style={{ width: 8 }} />
-            <TransactionTypeButton
-              type="outcome"
-              isChecked={transactionType === 'outcome'}
-              onPress={() => handleChangeTransactionType('outcome')}
-            />
-          </TypeButtonsWrapper>
+              <TypeButtonsWrapper>
+                <TransactionTypeButton
+                  type="income"
+                  isChecked={transactionType === 'income'}
+                  onPress={() => handleChangeTransactionType('income')}
+                />
+                <View style={{ width: 8 }} />
+                <TransactionTypeButton
+                  type="outcome"
+                  isChecked={transactionType === 'outcome'}
+                  onPress={() => handleChangeTransactionType('outcome')}
+                />
+              </TypeButtonsWrapper>
 
-          <View style={{ marginTop: 16 }}>
-            <CategoryPicker onPickerChange={setCategory} />
-          </View>
-        </View>
+              <View style={{ marginTop: 16 }}>
+                <CategoryPicker onPickerChange={setCategory} />
+              </View>
+            </View>
 
-        <Button onPress={handleSubmit(handleAddTransaction)}>
-          <ButtonText>Enviar</ButtonText>
-        </Button>
-      </Content>
-    </Container>
+            <Button onPress={handleSubmit(handleAddTransaction)}>
+              <ButtonText>Enviar</ButtonText>
+            </Button>
+          </Content>
+        </Container>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 }
