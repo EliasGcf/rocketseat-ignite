@@ -13,7 +13,7 @@ type CategoryPickerProps = {
 export function CategoryPicker({ onPickerChange }: CategoryPickerProps) {
   const theme = useTheme();
 
-  const [selectedCategory, setSelectedCategory] = useState('placeholder');
+  const [selectedCategory, setSelectedCategory] = useState('');
 
   function handlePickerChange(value: string) {
     if (selectedCategory === value) return;
@@ -63,7 +63,7 @@ export function CategoryPicker({ onPickerChange }: CategoryPickerProps) {
       value={selectedCategory}
       onValueChange={handlePickerChange}
       useNativeAndroidPickerStyle={false}
-      placeholder={{ label: 'Categoria', value: 'placeholder', color: theme.colors.text }}
+      placeholder={{ label: 'Categoria', value: '', color: theme.colors.text }}
       Icon={() => (
         <View
           style={{
@@ -75,7 +75,7 @@ export function CategoryPicker({ onPickerChange }: CategoryPickerProps) {
             justifyContent: 'space-between',
           }}
         >
-          {selectedCategory === 'placeholder' ? (
+          {selectedCategory === '' ? (
             <Feather size={20} name="tag" color={theme.colors.text} />
           ) : (
             <Feather

@@ -1,10 +1,9 @@
 import React from 'react';
-import { TextInputProps } from 'react-native';
 import { Controller, Control } from 'react-hook-form';
 
-import { Input } from '@components/Input';
+import { Input, InputProps } from '@components/Input';
 
-type InputFormProps = TextInputProps & {
+type InputFormProps = InputProps & {
   name: string;
   control: Control<any>;
 };

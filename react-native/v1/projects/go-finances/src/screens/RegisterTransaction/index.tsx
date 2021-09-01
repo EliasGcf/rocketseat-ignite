@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
 import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 
 import { InputForm } from '@components/react-hook-form/Input';
 import { TransactionTypeButton } from '@components/TransactionTypeButton';
@@ -22,8 +24,15 @@ type FormData = {
   amount: string;
 };
 
+const formSchemaValidation = yup.object().shape({
+  name: yup.string().required('Nome é obrigatório.'),
+  amount: yup.string().required('Preço é obrigatório.'),
+});
+
 export function RegisterTransaction() {
-  const { control, handleSubmit, formState } = useForm<FormData>();
+  const { control, handleSubmit } = useForm<FormData>({
+    resolver: yupResolver(formSchemaValidation),
+  });
 
   const [transactionType, setTransactionType] = useState<'income' | 'outcome' | ''>('');
   const [category, setCategory] = useState('');
@@ -49,6 +58,7 @@ export function RegisterTransaction() {
             defaultValue=""
             control={control}
             placeholder="Nome"
+            autoCapitalize="sentences"
             style={{ marginBottom: 8 }}
           />
 
@@ -58,7 +68,7 @@ export function RegisterTransaction() {
             control={control}
             placeholder="Preço"
             returnKeyType="done"
-            keyboardType="number-pad"
+            keyboardType="decimal-pad"
           />
 
           <TypeButtonsWrapper>
