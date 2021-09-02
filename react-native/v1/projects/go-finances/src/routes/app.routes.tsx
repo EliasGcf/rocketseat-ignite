@@ -24,6 +24,7 @@ export function AppRoutes() {
         name="Listagem"
         component={Dashboard}
         options={{
+          headerShown: false,
           tabBarIcon: ({ color, size }) => (
             <Feather name="list" size={size} color={color} />
           ),
@@ -33,6 +34,15 @@ export function AppRoutes() {
         name="Cadastrar"
         component={RegisterTransaction}
         options={{
+          headerTitleAlign: 'center',
+          headerTintColor: theme.colors.shape,
+          headerTitleStyle: {
+            fontSize: 18,
+            fontFamily: theme.fonts.poppins.regular,
+          },
+          headerStyle: {
+            backgroundColor: theme.colors.primary,
+          },
           tabBarIcon: ({ color, size }) => (
             <Feather name="dollar-sign" size={size} color={color} />
           ),
@@ -42,6 +52,15 @@ export function AppRoutes() {
         name="Resumo"
         component={View}
         options={{
+          headerTitleAlign: 'center',
+          headerTintColor: theme.colors.shape,
+          headerTitleStyle: {
+            fontSize: 18,
+            fontFamily: theme.fonts.poppins.regular,
+          },
+          headerStyle: {
+            backgroundColor: theme.colors.primary,
+          },
           tabBarIcon: ({ color, size }) => (
             <Feather name="pie-chart" size={size} color={color} />
           ),

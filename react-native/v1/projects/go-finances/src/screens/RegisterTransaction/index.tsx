@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 
 import { Form } from '@screens/RegisterTransaction/Form';
-import { Header } from '@screens/RegisterTransaction/Header';
 
 import { Container } from './styles';
 
@@ -40,7 +39,6 @@ export function RegisterTransaction() {
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <Container>
-          <Header />
           <ScrollView
             scrollEnabled={isKeyboardOpened}
             keyboardShouldPersistTaps="always"
