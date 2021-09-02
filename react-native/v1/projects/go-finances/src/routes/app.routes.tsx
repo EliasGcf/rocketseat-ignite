@@ -34,6 +34,7 @@ export function AppRoutes() {
         name="Cadastrar"
         component={RegisterTransaction}
         options={{
+          headerTitle: 'Cadastro',
           headerTitleAlign: 'center',
           headerTintColor: theme.colors.shape,
           headerTitleStyle: {
@@ -53,6 +54,7 @@ export function AppRoutes() {
         component={View}
         options={{
           headerTitleAlign: 'center',
+          headerTitle: 'Resumo por categoria',
           headerTintColor: theme.colors.shape,
           headerTitleStyle: {
             fontSize: 18,

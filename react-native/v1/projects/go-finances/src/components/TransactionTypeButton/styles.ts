@@ -1,7 +1,7 @@
-import styled, { css } from 'styled-components/native';
-import { TouchableOpacity } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
 import { transparentize } from 'polished';
+import { Ionicons } from '@expo/vector-icons';
+import styled, { css } from 'styled-components/native';
+import { RectButton } from 'react-native-gesture-handler';
 
 import { TransactionTypeButtonProps } from './index';
 
@@ -10,16 +10,10 @@ type ContainerProps = {
   type: TransactionTypeButtonProps['type'];
 };
 
-export const Container = styled.TouchableOpacity.attrs({
-  activeOpacity: Number(0.7),
-})<ContainerProps>`
+export const Container = styled.View<ContainerProps>`
   flex: 1;
   height: 56px;
   border-radius: 5px;
-  align-items: center;
-  flex-direction: row;
-  padding: 0 28px 0 28px;
-  justify-content: center;
   border: 1.5px solid ${({ theme }) => transparentize(0.8, theme.colors.text)};
 
   ${({ isChecked, type }) => {
@@ -36,7 +30,29 @@ export const Container = styled.TouchableOpacity.attrs({
         border: none;
       `;
     }
+
+    return {};
   }}
+`;
+
+export const Button = styled(RectButton).attrs<ContainerProps>(props => {
+  const buttonTintColor = {
+    income: props.theme.colors.success,
+    outcome: props.theme.colors.attention,
+  };
+
+  return {
+    underlayColor: transparentize(0.9, buttonTintColor[props.type]),
+    rippleColor: transparentize(0.9, buttonTintColor[props.type]),
+  };
+})<ContainerProps>`
+  flex: 1;
+  height: 56px;
+  border-radius: 5px;
+  align-items: center;
+  flex-direction: row;
+  padding: 0 28px 0 28px;
+  justify-content: center;
 `;
 
 export const Title = styled.Text`

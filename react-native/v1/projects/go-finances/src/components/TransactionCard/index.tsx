@@ -1,12 +1,11 @@
 import React from 'react';
-import { StyleProp, View, ViewStyle } from 'react-native';
+import { View } from 'react-native';
 
 import {
   Container,
   Title,
   Amount,
   Footer,
-  IconButton,
   FooterIcon,
   FooterText,
   FooterDate,
@@ -34,10 +33,7 @@ export function TransactionCard({ data }: TransactionCardProps) {
       </View>
 
       <Footer>
-        <IconButton>
-          <FooterIcon />
-        </IconButton>
-
+        <FooterIcon />
         <FooterText>{data.category}</FooterText>
         <FooterDate>{data.date}</FooterDate>
       </Footer>

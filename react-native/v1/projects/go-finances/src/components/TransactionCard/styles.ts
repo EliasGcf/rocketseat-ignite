@@ -41,16 +41,12 @@ export const Footer = styled.View`
   align-items: center;
 `;
 
-export const IconButton = styled.TouchableOpacity`
-  height: 20px;
-  width: 20px;
-  margin: 0 12px 0 0;
-`;
-
 export const FooterIcon = styled(Feather).attrs({
   name: 'dollar-sign',
   size: 20,
 })`
+  height: 20px;
+  margin: 0 12px 0 0;
   color: ${({ theme }) => theme.colors.text};
 `;
 

@@ -45,13 +45,6 @@ export const Title = styled.Text<TitleProps>`
     `}
 `;
 
-export const IconButton = styled.TouchableOpacity.attrs({
-  activeOpacity: 0.7,
-})`
-  height: 40px;
-  width: 40px;
-`;
-
 export const ArrowUpIcon = styled(Ionicons).attrs({
   name: 'arrow-up-circle-outline',
   size: 40,

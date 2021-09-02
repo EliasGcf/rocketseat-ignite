@@ -1,9 +1,9 @@
 import React from 'react';
-import { TouchableOpacityProps } from 'react-native';
+import { RectButtonProps } from 'react-native-gesture-handler';
 
-import { ArrowDownIcon, ArrowUpIcon, Container, Title } from './styles';
+import { Container, ArrowDownIcon, ArrowUpIcon, Button, Title } from './styles';
 
-export type TransactionTypeButtonProps = TouchableOpacityProps & {
+export type TransactionTypeButtonProps = RectButtonProps & {
   type: 'income' | 'outcome';
   isChecked: boolean;
 };
@@ -24,9 +24,11 @@ export function TransactionTypeButton({
   }[type];
 
   return (
-    <Container type={type} isChecked={isChecked} {...rest}>
-      <Icon />
-      <Title>{TitleText[type]}</Title>
+    <Container type={type} isChecked={isChecked}>
+      <Button type={type} isChecked={isChecked} {...rest}>
+        <Icon />
+        <Title>{TitleText[type]}</Title>
+      </Button>
     </Container>
   );
 }

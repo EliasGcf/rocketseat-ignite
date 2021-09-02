@@ -10,7 +10,6 @@ import {
   LastTransaction,
   ArrowDownIcon,
   DollarIcon,
-  IconButton,
 } from './styles';
 
 type HighlightCardData = {
@@ -45,9 +44,7 @@ export function HighlightCard({
     <Container type={type} hasMarginRight={hasMarginRight}>
       <Header>
         <Title type={type}>{cardTitle[type]}</Title>
-        <IconButton style={{ height: 40 }} activeOpacity={0.7}>
-          <CardIcon />
-        </IconButton>
+        <CardIcon />
       </Header>
 
       <Content>

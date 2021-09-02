@@ -1,6 +1,6 @@
 import { Feather } from '@expo/vector-icons';
 import styled, { css } from 'styled-components/native';
-import { ScrollView } from 'react-native-gesture-handler';
+import { BorderlessButton, ScrollView } from 'react-native-gesture-handler';
 import { isIphoneX, getStatusBarHeight } from 'react-native-iphone-x-helper';
 
 const Row = styled.View`
@@ -21,8 +21,8 @@ export const Container = styled.View`
 
 export const UserInfo = styled(Row)`
   height: 48px;
-  padding: 0 24px 0 24px;
   align-items: center;
+  padding: 0 20px 0 24px;
 `;
 
 export const UserAvatar = styled.Image`
@@ -49,8 +49,12 @@ export const UserName = styled.Text`
   color: #fff;
 `;
 
-export const PowerIconButton = styled.TouchableOpacity.attrs({ activeOpacity: 0.7 })`
+export const PowerIconButton = styled(BorderlessButton)`
+  width: 32px;
+  height: 32px;
   margin-left: auto;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const PowerIcon = styled(Feather).attrs({ name: 'power' })`
