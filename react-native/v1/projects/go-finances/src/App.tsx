@@ -12,8 +12,7 @@ import { ToastProvider } from 'react-native-toast-notifications';
 
 import { theme } from '@global/styles/theme';
 
-import { Dashboard } from '@screens/Dashboard';
-import { RegisterTransaction } from '@screens/RegisterTransaction';
+import { Routes } from '@routes/index.routes';
 
 export function App() {
   const [fontsLoaded] = useFonts({
@@ -37,8 +36,7 @@ export function App() {
         successColor={theme.colors.success}
       >
         <StatusBar barStyle="light-content" backgroundColor={theme.colors.primary} />
-        {/* <Dashboard /> */}
-        <RegisterTransaction />
+        <Routes />
       </ToastProvider>
     </ThemeProvider>
   );
