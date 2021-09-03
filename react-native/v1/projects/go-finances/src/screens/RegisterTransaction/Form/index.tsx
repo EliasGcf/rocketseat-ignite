@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useToast } from 'react-native-toast-notifications';
+import { useIsFocused } from '@react-navigation/native';
 
 import { InputForm } from '@components/react-hook-form/Input';
 import { TransactionTypeButton } from '@components/TransactionTypeButton';
@@ -26,6 +27,7 @@ const formSchemaValidation = yup.object().shape({
 
 export function Form() {
   const toast = useToast();
+  const isFocused = useIsFocused();
   const { addTransaction } = useTransactions();
 
   const { control, handleSubmit, setFocus, reset } = useForm<FormData>({
@@ -89,6 +91,12 @@ export function Form() {
       setCategory('');
     }
   }
+
+  useEffect(() => {
+    if (!isFocused) {
+      toast.hideAll();
+    }
+  }, [isFocused, toast]);
 
   return (
     <Content>
