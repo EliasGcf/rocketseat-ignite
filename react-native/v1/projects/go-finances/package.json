@@ -10,6 +10,7 @@
     "@expo-google-fonts/poppins": "^0.2.0",
     "@expo/vector-icons": "^12.0.0",
     "@hookform/resolvers": "^2.8.0",
+    "@react-native-async-storage/async-storage": "~1.15.0",
     "@react-native-picker/picker": "1.16.1",
     "@react-navigation/bottom-tabs": "^6.0.5",
     "@react-navigation/native": "^6.0.2",
@@ -33,6 +34,7 @@
     "react-native-screens": "~3.4.0",
     "react-native-toast-notifications": "^3.1.1",
     "react-native-unimodules": "~0.14.5",
+    "react-native-uuid": "^2.0.1",
     "react-native-web": "~0.13.12",
     "styled-components": "^5.3.1",
     "yup": "^0.32.9"

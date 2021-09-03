@@ -8,6 +8,8 @@ import { useToast } from 'react-native-toast-notifications';
 import { InputForm } from '@components/react-hook-form/Input';
 import { TransactionTypeButton } from '@components/TransactionTypeButton';
 
+import { useTransactions } from '@hooks/useTransactions';
+
 import { CategoryPicker } from '@screens/RegisterTransaction/CategoryPicker';
 
 import { Button, ButtonText, Content, TypeButtonsWrapper } from './styles';
@@ -24,6 +26,7 @@ const formSchemaValidation = yup.object().shape({
 
 export function Form() {
   const toast = useToast();
+  const { addTransaction } = useTransactions();
 
   const { control, handleSubmit, setFocus } = useForm<FormData>({
     resolver: yupResolver(formSchemaValidation),
@@ -57,15 +60,29 @@ export function Form() {
       return;
     }
 
-    const data = { ...formData, type: transactionType, category };
+    try {
+      await addTransaction({
+        category,
+        date: new Date(),
+        title: formData.name,
+        type: transactionType,
+        amount: Number(formData.amount),
+      });
 
-    toast.show('Transaction criada com sucesso.', {
-      animationType: 'zoom-in',
-      placement: 'top',
-      type: 'success',
-    });
+      toast.show('Transaction criada com sucesso.', {
+        animationType: 'zoom-in',
+        placement: 'top',
+        type: 'success',
+      });
+    } catch (err) {
+      console.log(err);
 
-    console.log(data);
+      toast.show('Não foi possível salvar.', {
+        animationType: 'zoom-in',
+        placement: 'top',
+        type: 'danger',
+      });
+    }
   }
 
   return (

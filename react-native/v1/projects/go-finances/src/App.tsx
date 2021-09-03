@@ -34,6 +34,7 @@ export function App() {
           fontFamily: theme.fonts.poppins.medium,
         }}
         successColor={theme.colors.success}
+        dangerColor={theme.colors.attention}
       >
         <StatusBar barStyle="light-content" backgroundColor={theme.colors.primary} />
         <Routes />

@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { View } from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
 
 import { formatCurrency } from '@utils/formatCurrency';
 import { TransactionCard } from '@components/TransactionCard';
+import { useTransactions } from '@hooks/useTransactions';
 
 import { Container, TransactionsList, TransactionsTitle } from './styles';
 
@@ -16,47 +18,35 @@ export type Transaction = {
 };
 
 export function Transactions() {
-  const data: Transaction[] = [
-    {
-      id: '1',
-      title: 'Desenvolvimento de site',
-      amount: formatCurrency(12000),
-      category: 'Vendas',
-      date: '13/04/2020',
-      type: 'income',
-    },
-    {
-      id: '2',
-      title: 'Hamburgueria Pizzy',
-      amount: formatCurrency(59),
-      category: 'Alimentação',
-      date: '10/04/2020',
-      type: 'outcome',
-    },
-    {
-      id: '3',
-      title: 'Desenvolvimento de site',
-      amount: formatCurrency(12000),
-      category: 'Vendas',
-      date: '13/04/2020',
-      type: 'income',
-    },
-    {
-      id: '4',
-      title: 'Hamburgueria Pizzy',
-      amount: formatCurrency(59),
-      category: 'Alimentação',
-      date: '10/04/2020',
-      type: 'outcome',
-    },
-  ];
+  const { getTransactions } = useTransactions();
+  const [transactions, setTransactions] = useState<Transaction[]>([]);
+
+  const loadTransactions = useCallback(async () => {
+    const storageTransactions = await getTransactions();
+
+    const formattedTransactions: Transaction[] = storageTransactions.map(transaction => {
+      return {
+        ...transaction,
+        amount: formatCurrency(transaction.amount),
+        date: transaction.date.toLocaleDateString('pt-BR'),
+      };
+    });
+
+    setTransactions(formattedTransactions);
+  }, [getTransactions]);
+
+  useFocusEffect(
+    useCallback(() => {
+      loadTransactions();
+    }, [loadTransactions]),
+  );
 
   return (
     <Container>
       <TransactionsTitle>Listagem</TransactionsTitle>
 
       <TransactionsList
-        data={data}
+        data={transactions}
         keyExtractor={item => item.id}
         ItemSeparatorComponent={() => <View style={{ height: 16 }} />}
         renderItem={({ item: transaction }) => <TransactionCard data={transaction} />}
