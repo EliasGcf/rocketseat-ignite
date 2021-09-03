@@ -20,14 +20,14 @@ export const Container = styled.View<ContainerProps>`
     if (isChecked && type === 'income') {
       return css`
         background: ${({ theme }) => transparentize(0.9, theme.colors.success)};
-        border: none;
+        border-color: transparent;
       `;
     }
 
     if (isChecked && type === 'outcome') {
       return css`
         background: ${({ theme }) => transparentize(0.9, theme.colors.attention)};
-        border: none;
+        border-color: transparent;
       `;
     }
 
