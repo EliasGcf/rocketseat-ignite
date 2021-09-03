@@ -6,12 +6,15 @@ import {
   ScrollView,
   TouchableWithoutFeedback,
 } from 'react-native';
+import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 
 import { Form } from '@screens/RegisterTransaction/Form';
 
 import { Container } from './styles';
 
 export function RegisterTransaction() {
+  const tabBarHeight = useBottomTabBarHeight();
+
   const [isKeyboardOpened, setIsKeyboardOpened] = useState(false);
 
   useEffect(() => {
@@ -35,6 +38,7 @@ export function RegisterTransaction() {
   return (
     <KeyboardAvoidingView
       style={{ flex: 1 }}
+      keyboardVerticalOffset={tabBarHeight}
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
