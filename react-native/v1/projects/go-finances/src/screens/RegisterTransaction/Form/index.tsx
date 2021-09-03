@@ -28,7 +28,7 @@ export function Form() {
   const toast = useToast();
   const { addTransaction } = useTransactions();
 
-  const { control, handleSubmit, setFocus } = useForm<FormData>({
+  const { control, handleSubmit, setFocus, reset } = useForm<FormData>({
     resolver: yupResolver(formSchemaValidation),
   });
 
@@ -75,6 +75,7 @@ export function Form() {
         type: 'success',
       });
     } catch (err) {
+      // eslint-disable-next-line no-console
       console.log(err);
 
       toast.show('Não foi possível salvar.', {
@@ -82,6 +83,10 @@ export function Form() {
         placement: 'top',
         type: 'danger',
       });
+    } finally {
+      reset();
+      setTransactionType('');
+      setCategory('');
     }
   }
 
@@ -123,7 +128,7 @@ export function Form() {
         </TypeButtonsWrapper>
 
         <View style={{ marginTop: 16 }}>
-          <CategoryPicker onPickerChange={setCategory} />
+          <CategoryPicker selectedCategory={category} onPickerChange={setCategory} />
         </View>
       </View>
 

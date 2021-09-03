@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-bind */
 import React, { useState } from 'react';
 import { useTheme } from 'styled-components';
 import { Feather } from '@expo/vector-icons';
@@ -7,18 +8,19 @@ import { categories } from '@utils/categories';
 import { View } from 'react-native';
 
 type CategoryPickerProps = {
+  selectedCategory: string;
   onPickerChange: (value: string) => void;
 };
 
-export function CategoryPicker({ onPickerChange }: CategoryPickerProps) {
+export function CategoryPicker({
+  selectedCategory,
+  onPickerChange,
+}: CategoryPickerProps) {
   const theme = useTheme();
-
-  const [selectedCategory, setSelectedCategory] = useState('');
 
   function handlePickerChange(value: string) {
     if (selectedCategory === value) return;
 
-    setSelectedCategory(value);
     onPickerChange(value);
   }
 
