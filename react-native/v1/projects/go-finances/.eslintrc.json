@@ -21,6 +21,8 @@
   "rules": {
     "prettier/prettier": "error",
     "camelcase": "off",
+    "operator-assignment": "off",
+    "import/no-duplicates": "off",
     "no-use-before-define": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-props-no-spreading": "off",
