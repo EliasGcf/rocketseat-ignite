@@ -25,6 +25,7 @@
     "import/no-duplicates": "off",
     "no-use-before-define": "off",
     "react/react-in-jsx-scope": "off",
+    "react/jsx-no-bind": "off",
     "react/jsx-props-no-spreading": "off",
     "react-hooks/rules-of-hooks": "error",
     "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],

@@ -6,7 +6,8 @@ import { useFocusEffect } from '@react-navigation/native';
 import { formatCurrency } from '@utils/formatCurrency';
 import { HighlightCard } from '@components/HighlightCard';
 
-import { Balance, useTransactions } from '@hooks/useTransactions';
+import { useTransactions } from '@hooks/useTransactions';
+import { Balance } from '@contexts/Transactions/context';
 
 import {
   Container,
@@ -36,7 +37,7 @@ export function Header() {
   const [balance, setBalance] = useState<HeaderBalance | null>(null);
 
   const loadBalance = useCallback(async () => {
-    const storageBalance = await getBalance();
+    const storageBalance = getBalance();
 
     const incomeDescription = storageBalance.income.lastDate
       ? format(storageBalance.income.lastDate, "'Última entrada dia' dd 'de' MMMM", {

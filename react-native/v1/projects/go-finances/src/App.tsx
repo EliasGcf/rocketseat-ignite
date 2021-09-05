@@ -11,6 +11,7 @@ import {
 import { ToastProvider } from 'react-native-toast-notifications';
 
 import { theme } from '@global/styles/theme';
+import { TransactionsContextProvider } from '@contexts/Transactions/Provider';
 
 import { Routes } from '@routes/index.routes';
 
@@ -37,7 +38,9 @@ export function App() {
         dangerColor={theme.colors.attention}
       >
         <StatusBar barStyle="light-content" backgroundColor={theme.colors.primary} />
-        <Routes />
+        <TransactionsContextProvider>
+          <Routes />
+        </TransactionsContextProvider>
       </ToastProvider>
     </ThemeProvider>
   );

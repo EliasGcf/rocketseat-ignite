@@ -1,7 +1,7 @@
 import { FlatList } from 'react-native';
 import styled from 'styled-components/native';
 
-import { Transaction } from './index';
+import { Transaction } from '@contexts/Transactions/context';
 
 export const Container = styled.View`
   flex: 1;

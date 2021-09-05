@@ -1,5 +1,4 @@
-import React, { useCallback, useState } from 'react';
-import { useFocusEffect } from '@react-navigation/native';
+import React, { useMemo, useState } from 'react';
 import { useTheme } from 'styled-components';
 import { VictoryPie } from 'victory-native';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
@@ -8,9 +7,9 @@ import { categories } from '@utils/categories';
 import { formatCurrency } from '@utils/formatCurrency';
 import { useTransactions } from '@hooks/useTransactions';
 
+import { MonthSelect } from '@screens/Summary/MonthSelect';
 import { CategoryCard } from '@screens/Summary/CategoryCard';
 
-import { ActivityIndicator } from 'react-native';
 import { Container } from './styles';
 
 type OutcomeBalance = {
@@ -26,13 +25,57 @@ type OutcomeBalance = {
 };
 
 export function Summary() {
-  const [outcomeBalance, setOutcomeBalance] = useState<OutcomeBalance | null>(null);
-  const { getOutcomeBalanceByCategory } = useTransactions();
   const tabBarHeight = useBottomTabBarHeight();
   const theme = useTheme();
 
-  const loadBalance = useCallback(async () => {
-    const balance = await getOutcomeBalanceByCategory();
+  const { transactions } = useTransactions();
+
+  const lastMonth = useMemo(() => {
+    const outcomeTransactions = transactions.filter(
+      transaction => transaction.type === 'outcome',
+    );
+    const lastTransactions = outcomeTransactions[outcomeTransactions.length - 1];
+
+    return lastTransactions.date.toLocaleString('pt-BR', { month: 'long' });
+  }, [transactions]);
+
+  const [currentMonth, setCurrentMonth] = useState(lastMonth);
+
+  const outcomeBalanceFilteredByMonth = useMemo<OutcomeBalance>(() => {
+    const balance = transactions.reduce(
+      (acc, transaction) => {
+        if (transaction.type !== 'outcome') return acc;
+        if (
+          currentMonth &&
+          transaction.date.toLocaleString('pt-BR', { month: 'long' }) !== currentMonth
+        ) {
+          return acc;
+        }
+
+        acc.total = acc.total + transaction.amount;
+
+        const category = acc.categories.find(
+          findCategory => findCategory.key === transaction.category,
+        );
+
+        if (!category) {
+          acc.categories.push({
+            key: transaction.category,
+            amount: transaction.amount,
+          });
+
+          return acc;
+        }
+
+        category.amount = category.amount + transaction.amount;
+
+        return acc;
+      },
+      {
+        total: 0,
+        categories: [] as { key: string; amount: number }[],
+      },
+    );
 
     const data: OutcomeBalance = {
       ...balance,
@@ -51,39 +94,41 @@ export function Summary() {
       }),
     };
 
-    setOutcomeBalance(data);
-  }, [getOutcomeBalanceByCategory, theme]);
+    return data;
+  }, [currentMonth, theme.colors.text, transactions]);
 
-  useFocusEffect(
-    useCallback(() => {
-      loadBalance();
-    }, [loadBalance]),
-  );
+  function handleCurrentMonthChange(month: string) {
+    if (month === currentMonth) return;
 
-  if (!outcomeBalance) {
-    return <ActivityIndicator />;
+    setCurrentMonth(month);
   }
 
   return (
     <Container bottomOffset={tabBarHeight}>
+      <MonthSelect onMonthChange={handleCurrentMonthChange} />
+
       <VictoryPie
         y="amount"
         height={277}
         x="percent"
         labelRadius={50}
         padding={{ top: 0, bottom: 32 }}
-        data={outcomeBalance.categories}
-        colorScale={outcomeBalance.categories.map(category => category.color)}
+        data={outcomeBalanceFilteredByMonth.categories}
+        colorScale={outcomeBalanceFilteredByMonth.categories.map(
+          category => category.color,
+        )}
         style={{ labels: { fontSize: 16, fill: theme.colors.shape, fontWeight: 'bold' } }}
       />
 
-      {outcomeBalance.categories.map((category, index) => (
+      {outcomeBalanceFilteredByMonth.categories.map((category, index) => (
         <CategoryCard
           key={category.key}
           color={category.color}
           title={category.title}
           amount={category.amountFormatted}
-          shouldHaveBottomSpace={index !== outcomeBalance.categories.length - 1}
+          shouldHaveBottomSpace={
+            index !== outcomeBalanceFilteredByMonth.categories.length - 1
+          }
         />
       ))}
     </Container>
