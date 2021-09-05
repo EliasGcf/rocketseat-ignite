@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { useFocusEffect } from '@react-navigation/native';
 import { useTheme } from 'styled-components';
 import { VictoryPie } from 'victory-native';
+import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 
 import { categories } from '@utils/categories';
 import { formatCurrency } from '@utils/formatCurrency';
@@ -27,6 +28,7 @@ type OutcomeBalance = {
 export function Summary() {
   const [outcomeBalance, setOutcomeBalance] = useState<OutcomeBalance | null>(null);
   const { getOutcomeBalanceByCategory } = useTransactions();
+  const tabBarHeight = useBottomTabBarHeight();
   const theme = useTheme();
 
   const loadBalance = useCallback(async () => {
@@ -63,10 +65,9 @@ export function Summary() {
   }
 
   return (
-    <Container>
+    <Container bottomOffset={tabBarHeight}>
       <VictoryPie
         y="amount"
-        // width={245}
         height={277}
         x="percent"
         labelRadius={50}
