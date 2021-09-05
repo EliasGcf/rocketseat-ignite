@@ -6,6 +6,8 @@ type ContainerProps = {
 };
 
 export const Container = styled.View<ContainerProps>`
+  width: 100%;
+  max-width: 328px;
   height: 48px;
   border-radius: 5px;
   flex-direction: row;

@@ -112,26 +112,36 @@ export function useTransactions() {
   const getOutcomeBalanceByCategory = useCallback(async () => {
     const transactions = await getTransactions();
 
-    const balance = transactions.reduce<{ [key: string]: number }>((acc, transaction) => {
-      if (transaction.type !== 'outcome') return acc;
+    const balance = transactions.reduce(
+      (acc, transaction) => {
+        if (transaction.type !== 'outcome') return acc;
 
-      if (!acc[transaction.category]) {
-        acc[transaction.category] = 0;
-      }
+        acc.total = acc.total + transaction.amount;
 
-      acc[transaction.category] = acc[transaction.category] + transaction.amount;
+        const category = acc.categories.find(
+          findCategory => findCategory.key === transaction.category,
+        );
 
-      return acc;
-    }, {});
+        if (!category) {
+          acc.categories.push({
+            key: transaction.category,
+            amount: transaction.amount,
+          });
 
-    const categories = Object.keys(balance).map(category => {
-      return {
-        categoryKey: category,
-        amount: balance[category],
-      };
-    });
+          return acc;
+        }
 
-    return categories;
+        category.amount = category.amount + transaction.amount;
+
+        return acc;
+      },
+      {
+        total: 0,
+        categories: [] as { key: string; amount: number }[],
+      },
+    );
+
+    return balance;
   }, [getTransactions]);
 
   const data = useMemo(() => {
