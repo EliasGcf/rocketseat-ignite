@@ -1,9 +1,9 @@
 import React from 'react';
-import { View } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { useTheme } from 'styled-components';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
+import { Summary } from '@screens/Summary';
 import { Dashboard } from '@screens/Dashboard';
 import { RegisterTransaction } from '@screens/RegisterTransaction';
 
@@ -51,7 +51,7 @@ export function AppRoutes() {
       />
       <Tab.Screen
         name="Resumo"
-        component={View}
+        component={Summary}
         options={{
           headerTitleAlign: 'center',
           headerTitle: 'Resumo por categoria',

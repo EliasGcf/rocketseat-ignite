@@ -109,13 +109,39 @@ export function useTransactions() {
     return balance;
   }, [getTransactions]);
 
+  const getOutcomeBalanceByCategory = useCallback(async () => {
+    const transactions = await getTransactions();
+
+    const balance = transactions.reduce<{ [key: string]: number }>((acc, transaction) => {
+      if (transaction.type !== 'outcome') return acc;
+
+      if (!acc[transaction.category]) {
+        acc[transaction.category] = 0;
+      }
+
+      acc[transaction.category] = acc[transaction.category] + transaction.amount;
+
+      return acc;
+    }, {});
+
+    const categories = Object.keys(balance).map(category => {
+      return {
+        categoryKey: category,
+        amount: balance[category],
+      };
+    });
+
+    return categories;
+  }, [getTransactions]);
+
   const data = useMemo(() => {
     return {
-      getTransactions,
-      addTransaction,
       getBalance,
+      addTransaction,
+      getTransactions,
+      getOutcomeBalanceByCategory,
     };
-  }, [getTransactions, addTransaction, getBalance]);
+  }, [getTransactions, addTransaction, getBalance, getOutcomeBalanceByCategory]);
 
   return data;
 }
