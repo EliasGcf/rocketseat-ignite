@@ -1,3 +1,4 @@
+import { categories } from '@utils/categories';
 import React from 'react';
 import { View } from 'react-native';
 
@@ -22,6 +23,8 @@ export type TransactionCardProps = {
 };
 
 export function TransactionCard({ data }: TransactionCardProps) {
+  const categoryData = categories.find(category => category.key === data.category);
+
   return (
     <Container>
       <View>
@@ -33,8 +36,8 @@ export function TransactionCard({ data }: TransactionCardProps) {
       </View>
 
       <Footer>
-        <FooterIcon />
-        <FooterText>{data.category}</FooterText>
+        <FooterIcon name={categoryData?.icon} />
+        <FooterText>{categoryData?.name}</FooterText>
         <FooterDate>{data.date}</FooterDate>
       </Footer>
     </Container>

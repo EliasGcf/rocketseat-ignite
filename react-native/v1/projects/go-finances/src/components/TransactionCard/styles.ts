@@ -42,7 +42,6 @@ export const Footer = styled.View`
 `;
 
 export const FooterIcon = styled(Feather).attrs({
-  name: 'dollar-sign',
   size: 20,
 })`
   height: 20px;
