@@ -36,7 +36,7 @@ export function Summary() {
     );
     const lastTransactions = outcomeTransactions[outcomeTransactions.length - 1];
 
-    return lastTransactions.date.toLocaleString('pt-BR', { month: 'long' });
+    return lastTransactions.date;
   }, [transactions]);
 
   const [currentMonth, setCurrentMonth] = useState(lastMonth);
@@ -47,7 +47,8 @@ export function Summary() {
         if (transaction.type !== 'outcome') return acc;
         if (
           currentMonth &&
-          transaction.date.toLocaleString('pt-BR', { month: 'long' }) !== currentMonth
+          (transaction.date.getMonth() !== currentMonth.getMonth() ||
+            transaction.date.getFullYear() !== currentMonth.getFullYear())
         ) {
           return acc;
         }
@@ -97,10 +98,10 @@ export function Summary() {
     return data;
   }, [currentMonth, theme.colors.text, transactions]);
 
-  function handleCurrentMonthChange(month: string) {
-    if (month === currentMonth) return;
+  function handleCurrentMonthChange(date: Date) {
+    if (date === currentMonth) return;
 
-    setCurrentMonth(month);
+    setCurrentMonth(date);
   }
 
   return (

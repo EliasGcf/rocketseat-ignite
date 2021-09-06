@@ -1,11 +1,13 @@
 import React, { useMemo, useState } from 'react';
+import { format, startOfMonth } from 'date-fns';
+import ptBR from 'date-fns/locale/pt-BR';
 
 import { useTransactions } from '@hooks/useTransactions';
 
 import { ChevronLeft, ChevronRight, Container, IconButton, Title } from './styles';
 
 type MonthSelectProps = {
-  onMonthChange: (month: string) => void;
+  onMonthChange: (date: Date) => void;
 };
 
 export function MonthSelect({ onMonthChange }: MonthSelectProps) {
@@ -18,16 +20,20 @@ export function MonthSelect({ onMonthChange }: MonthSelectProps) {
 
     const uniqueMonths = new Set(
       outcomeTransactions.map(transaction => {
-        return transaction.date.toLocaleString('pt-BR', { month: 'long' });
+        return startOfMonth(transaction.date).getTime();
       }),
     );
 
-    return Array.from(uniqueMonths);
+    return Array.from(uniqueMonths).map(date => new Date(date));
   }, [transactions]);
 
   const [currentMonth, setCurrentMonth] = useState(
     outcomeMonths[outcomeMonths.length - 1],
   );
+
+  const formattedCurrentMonth = useMemo(() => {
+    return format(currentMonth, "MMMM',' yyyy", { locale: ptBR });
+  }, [currentMonth]);
 
   function handlePreviousMonthChange() {
     const previousMonthIndex = outcomeMonths.indexOf(currentMonth) - 1;
@@ -56,7 +62,7 @@ export function MonthSelect({ onMonthChange }: MonthSelectProps) {
         <ChevronLeft />
       </IconButton>
 
-      <Title>{currentMonth}</Title>
+      <Title>{formattedCurrentMonth}</Title>
 
       <IconButton
         onPress={handleNextMonthChange}
