@@ -25,6 +25,8 @@ const formSchemaValidation = yup.object().shape({
   amount: yup.string().required('Preço é obrigatório.'),
 });
 
+const toastId = 'form-notification';
+
 export function Form() {
   const toast = useToast();
   const isFocused = useIsFocused();
@@ -46,6 +48,7 @@ export function Form() {
 
     if (!transactionType) {
       toast.show('Tipo de transação é obrigatório.', {
+        id: toastId,
         animationType: 'zoom-in',
         placement: 'top',
       });
@@ -55,6 +58,7 @@ export function Form() {
 
     if (!category) {
       toast.show('Categoria é obrigatório.', {
+        id: toastId,
         animationType: 'zoom-in',
         placement: 'top',
       });
@@ -72,6 +76,7 @@ export function Form() {
       });
 
       toast.show('Transaction criada com sucesso.', {
+        id: toastId,
         animationType: 'zoom-in',
         placement: 'top',
         type: 'success',
@@ -81,6 +86,7 @@ export function Form() {
       console.log(err);
 
       toast.show('Não foi possível salvar.', {
+        id: toastId,
         animationType: 'zoom-in',
         placement: 'top',
         type: 'danger',
