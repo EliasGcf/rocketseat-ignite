@@ -55,3 +55,6 @@ web-build/
 
 # VSCode Folder
 .vscode/
+
+# Enviroment
+.env

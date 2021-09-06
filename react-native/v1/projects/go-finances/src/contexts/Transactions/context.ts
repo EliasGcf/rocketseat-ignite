@@ -31,6 +31,4 @@ export type TransactionContextData = {
   getBalance: () => Balance;
 };
 
-export const TransactionsContext = createContext<TransactionContextData>(
-  {} as TransactionContextData,
-);
+export const TransactionsContext = createContext({} as TransactionContextData);

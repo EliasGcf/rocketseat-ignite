@@ -15,6 +15,7 @@ import { TransactionsContextProvider } from '@contexts/Transactions/Provider';
 
 import { Routes } from '@routes/index.routes';
 import { SignIn } from '@screens/SignIn';
+import { AuthContextProvider } from '@contexts/Auth/Provider';
 
 export function App() {
   const [fontsLoaded] = useFonts({
@@ -39,9 +40,11 @@ export function App() {
         dangerColor={theme.colors.attention}
       >
         <StatusBar barStyle="light-content" backgroundColor={theme.colors.primary} />
-        <TransactionsContextProvider>
-          <SignIn />
-        </TransactionsContextProvider>
+        <AuthContextProvider>
+          <TransactionsContextProvider>
+            <SignIn />
+          </TransactionsContextProvider>
+        </AuthContextProvider>
       </ToastProvider>
     </ThemeProvider>
   );
