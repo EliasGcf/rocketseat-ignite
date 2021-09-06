@@ -14,6 +14,7 @@ import { theme } from '@global/styles/theme';
 import { TransactionsContextProvider } from '@contexts/Transactions/Provider';
 
 import { Routes } from '@routes/index.routes';
+import { SignIn } from '@screens/SignIn';
 
 export function App() {
   const [fontsLoaded] = useFonts({
@@ -39,7 +40,7 @@ export function App() {
       >
         <StatusBar barStyle="light-content" backgroundColor={theme.colors.primary} />
         <TransactionsContextProvider>
-          <Routes />
+          <SignIn />
         </TransactionsContextProvider>
       </ToastProvider>
     </ThemeProvider>
