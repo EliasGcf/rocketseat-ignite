@@ -6,6 +6,7 @@ import { useFocusEffect } from '@react-navigation/native';
 import { formatCurrency } from '@utils/formatCurrency';
 import { HighlightCard } from '@components/HighlightCard';
 
+import { useAuth } from '@hooks/useAuth';
 import { useTransactions } from '@hooks/useTransactions';
 import { Balance } from '@contexts/Transactions/context';
 
@@ -33,6 +34,7 @@ type HeaderBalance = Balance & {
 
 export function Header() {
   const { getBalance } = useTransactions();
+  const { signOut, user } = useAuth();
 
   const [balance, setBalance] = useState<HeaderBalance | null>(null);
 
@@ -97,14 +99,19 @@ export function Header() {
   return (
     <Container>
       <UserInfo>
-        <UserAvatar source={{ uri: 'https://github.com/EliasGcf.png' }} />
+        <UserAvatar
+          source={{
+            uri:
+              user?.avatar || `https://ui-avatars.com/api/?name=${user?.name}?length=1`,
+          }}
+        />
 
         <UserTextContainer>
           <UserGreeting>Olá,</UserGreeting>
-          <UserName>Elias Gabriel</UserName>
+          <UserName>{user?.name}</UserName>
         </UserTextContainer>
 
-        <PowerIconButton>
+        <PowerIconButton onPress={signOut}>
           <PowerIcon />
         </PowerIconButton>
       </UserInfo>

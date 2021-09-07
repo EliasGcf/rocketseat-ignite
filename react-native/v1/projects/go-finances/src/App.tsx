@@ -14,7 +14,6 @@ import { theme } from '@global/styles/theme';
 import { TransactionsContextProvider } from '@contexts/Transactions/Provider';
 
 import { Routes } from '@routes/index.routes';
-import { SignIn } from '@screens/SignIn';
 import { AuthContextProvider } from '@contexts/Auth/Provider';
 
 export function App() {
@@ -40,9 +39,10 @@ export function App() {
         dangerColor={theme.colors.attention}
       >
         <StatusBar barStyle="light-content" backgroundColor={theme.colors.primary} />
+
         <AuthContextProvider>
           <TransactionsContextProvider>
-            <SignIn />
+            <Routes />
           </TransactionsContextProvider>
         </AuthContextProvider>
       </ToastProvider>

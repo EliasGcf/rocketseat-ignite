@@ -10,6 +10,8 @@ export type User = {
 export type AuthContextData = {
   user: User | null;
   signInWithGoogle: () => Promise<void>;
+  signInWithApple: () => Promise<void>;
+  signOut: () => Promise<void>;
 };
 
 export const AuthContext = createContext({} as AuthContextData);

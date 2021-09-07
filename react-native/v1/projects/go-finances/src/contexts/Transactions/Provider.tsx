@@ -8,6 +8,7 @@ import {
   TransactionsContext,
   TransactionContextData,
 } from '@contexts/Transactions/context';
+import { useAuth } from '@hooks/useAuth';
 
 const STORAGE_KEY = '@go-finances:transactions';
 
@@ -19,10 +20,11 @@ export function TransactionsContextProvider({
   children,
 }: TransactionsContextProviderProps) {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const { user } = useAuth();
 
   useEffect(() => {
     async function loadTransactions() {
-      const storage = await AsyncStorage.getItem(STORAGE_KEY);
+      const storage = await AsyncStorage.getItem(`${STORAGE_KEY}:${user?.id}`);
       const parsedTransactions: Transaction[] = storage ? JSON.parse(storage) : [];
 
       const transactionsData = parsedTransactions.map(transaction => {
@@ -37,7 +39,7 @@ export function TransactionsContextProvider({
     }
 
     loadTransactions();
-  }, []);
+  }, [user]);
 
   const addTransaction = useCallback<TransactionContextData['addTransaction']>(
     async transaction => {
@@ -45,11 +47,14 @@ export function TransactionsContextProvider({
 
       const newTransactions = [...transactions, newTransaction];
 
-      await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(newTransactions));
+      await AsyncStorage.setItem(
+        `${STORAGE_KEY}:${user?.id}`,
+        JSON.stringify(newTransactions),
+      );
 
       setTransactions(newTransactions);
     },
-    [transactions],
+    [transactions, user],
   );
 
   const getBalance = useCallback(() => {

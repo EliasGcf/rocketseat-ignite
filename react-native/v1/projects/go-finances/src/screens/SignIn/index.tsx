@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useTheme } from 'styled-components';
 
 import AppleIcon from '@assets/svgs/apple-icon.svg';
 import GoogleIcon from '@assets/svgs/google-icon.svg';
@@ -8,16 +9,31 @@ import { useAuth } from '@hooks/useAuth';
 
 import { SocialButton } from '@screens/SignIn/SocialButton';
 
-import { Alert } from 'react-native';
+import { ActivityIndicator, Alert, Platform } from 'react-native';
 import { Container, Description, Footer, Main, Title } from './styles';
 
 export function SignIn() {
-  const { signInWithGoogle } = useAuth();
+  const theme = useTheme();
+  const [isLoading, setIsLoading] = useState(false);
+  const { signInWithGoogle, signInWithApple } = useAuth();
 
   async function handleSignInWithGoogle() {
     try {
+      setIsLoading(true);
       await signInWithGoogle();
     } catch (err) {
+      setIsLoading(false);
+      Alert.alert('Erro ao realizar login');
+      console.log(err);
+    }
+  }
+
+  async function handleSignInWithApple() {
+    try {
+      setIsLoading(true);
+      await signInWithApple();
+    } catch (err) {
+      setIsLoading(false);
       Alert.alert('Erro ao realizar login');
       console.log(err);
     }
@@ -42,12 +58,21 @@ export function SignIn() {
           style={{ marginTop: -27, marginBottom: 16 }}
           onPress={handleSignInWithGoogle}
         />
-        <SocialButton
-          enabled={false}
-          icon={AppleIcon}
-          title="Entrar com Apple"
-          style={{ opacity: 0.5 }}
-        />
+        {Platform.OS === 'ios' && (
+          <SocialButton
+            icon={AppleIcon}
+            title="Entrar com Apple"
+            onPress={handleSignInWithApple}
+          />
+        )}
+
+        {isLoading && (
+          <ActivityIndicator
+            size={48}
+            color={theme.colors.primary}
+            style={{ marginTop: 16 }}
+          />
+        )}
       </Footer>
     </Container>
   );
