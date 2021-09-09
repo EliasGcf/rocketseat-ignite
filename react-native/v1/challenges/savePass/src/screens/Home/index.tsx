@@ -29,16 +29,24 @@ export function Home() {
   const [data, setData] = useState<LoginListDataProps>([]);
 
   async function loadData() {
-    const dataKey = '@savepass:logins';
-    // Get asyncStorage data, use setSearchListData and setData
+    const dataKey = '@savepass:logins';   
+    const rawData = await AsyncStorage.getItem(dataKey);
+
+    if (!rawData) return;
+
+    const parsedData = JSON.parse(rawData);
+
+    setData(parsedData);
+    setSearchListData(parsedData);
   }
 
   function handleFilterLoginData() {
-    // Filter results inside data, save with setSearchListData
+    const filteredData = data.filter(item => item.service_name.includes(searchText));
+    setSearchListData(filteredData);
   }
 
   function handleChangeInputText(text: string) {
-    // Update searchText value
+    setSearchText(text);
   }
 
   useFocusEffect(useCallback(() => {
