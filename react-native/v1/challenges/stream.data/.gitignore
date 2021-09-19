@@ -114,3 +114,5 @@ web-build/
 # @end expo-cli
 
 .env
+
+yarn.lock
