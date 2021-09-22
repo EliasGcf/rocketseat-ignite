@@ -12,6 +12,7 @@ module.exports = function (api) {
             src: './src',
             '@global': './src/global',
             '@assets': './src/assets',
+            '@routes': './src/routes',
           },
         },
       ],

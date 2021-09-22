@@ -1,5 +1,4 @@
 import React from 'react';
-import { View } from 'react-native';
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import { ThemeProvider } from 'styled-components';
@@ -11,6 +10,7 @@ import {
 } from '@expo-google-fonts/archivo';
 
 import { theme } from '@global/styles/theme';
+import { Routes } from '@routes/index.routes';
 
 export function RentxApp() {
   const [isFontsLoaded] = useFonts({
@@ -28,7 +28,7 @@ export function RentxApp() {
 
   return (
     <ThemeProvider theme={theme}>
-      <View />
+      <Routes />
     </ThemeProvider>
   );
 }
