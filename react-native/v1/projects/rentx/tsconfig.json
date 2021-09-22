@@ -4,7 +4,8 @@
     "strict": true,
     "baseUrl": ".",
     "paths": {
-      "@global/*": ["./src/global/*"]
+      "@global/*": ["./src/global/*"],
+      "@assets/*": ["./src/assets/*"]
     }
   }
 }
