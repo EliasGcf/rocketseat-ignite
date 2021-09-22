@@ -6,7 +6,8 @@
     "paths": {
       "@global/*": ["./src/global/*"],
       "@assets/*": ["./src/assets/*"],
-      "@routes/*": ["./src/routes/*"]
+      "@routes/*": ["./src/routes/*"],
+      "@screens/*": ["./src/screens/*"]
     }
   }
 }
