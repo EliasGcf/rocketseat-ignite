@@ -46,6 +46,7 @@ export const theme = {
   fonts: {
     ...availableFonts,
     aliases: {
+      label: availableFonts.archivo.medium,
       text: availableFonts.inter.regular,
       title: availableFonts.archivo.medium,
     },
@@ -70,6 +71,7 @@ export const theme = {
   colors: {
     ...availableColors,
     aliases: {
+      label: availableColors.gray[400],
       title: availableColors.gray[600],
       background: availableColors.gray[100],
     },
