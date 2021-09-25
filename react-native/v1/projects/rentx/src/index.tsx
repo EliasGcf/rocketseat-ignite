@@ -9,7 +9,7 @@ import {
   Archivo_600SemiBold,
 } from '@expo-google-fonts/archivo';
 
-import { theme } from '@global/styles/theme';
+import { theme } from '@global/theme';
 import { Routes } from '@routes/index.routes';
 
 export function RentxApp() {
