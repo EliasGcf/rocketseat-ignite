@@ -32,6 +32,7 @@ const availableColors = {
 export const colors = {
   ...availableColors,
   aliases: {
+    text: availableColors.gray[500],
     label: availableColors.gray[400],
     title: availableColors.gray[600],
     background: availableColors.gray[100],

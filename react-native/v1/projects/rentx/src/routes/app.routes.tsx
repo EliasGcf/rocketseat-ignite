@@ -7,6 +7,9 @@ import RentxLogo from '@assets/svg/rentx-logo.svg';
 import { Home } from '@screens/Home';
 import { HomeHeaderText } from '@screens/Home/HomeHeaderText';
 
+import { CarDetails } from '@screens/CarDetails';
+import { HeaderLeftButton } from '@screens/CarDetails/HeaderLeftButton';
+
 const Stack = createNativeStackNavigator();
 
 export function AppRoutes() {
@@ -23,6 +26,16 @@ export function AppRoutes() {
           headerStyle: { backgroundColor: theme.colors.black },
           headerRight: HomeHeaderText,
           headerLeft: () => <RentxLogo />,
+        }}
+      />
+
+      <Stack.Screen
+        name="CarDetails"
+        component={CarDetails}
+        options={{
+          title: '',
+          headerShadowVisible: false,
+          headerLeft: HeaderLeftButton,
         }}
       />
     </Stack.Navigator>

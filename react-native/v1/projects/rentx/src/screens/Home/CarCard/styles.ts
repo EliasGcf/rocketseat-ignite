@@ -35,9 +35,10 @@ export const Footer = styled(Row)`
 `;
 
 export const CarPriceText = styled(Text)`
+  margin: 4px 0 0 0;
+
   ${({ theme }) => css`
     color: ${theme.colors.brand.mid};
-    margin: ${theme.spacing[1]}px 0 0 0;
     font-family: ${theme.fonts.aliases.title};
     font-size: ${theme.fontSizes.responsive.md}px;
   `};
