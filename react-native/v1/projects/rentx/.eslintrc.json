@@ -22,11 +22,12 @@
     "import/extensions": ["error", "ignorePackages", { "ts": "never", "tsx": "never" }],
     "@typescript-eslint/no-use-before-define": ["error", { "variables": false }],
     "@typescript-eslint/explicit-module-boundary-types": "off",
-    "react/require-default-props": "off",
     "react-hooks/exhaustive-deps": "warn",
     "react-hooks/rules-of-hooks": "error",
     "react/style-prop-object": "off",
     "react/react-in-jsx-scope": "off",
+    "react/require-default-props": "off",
+    "react/jsx-props-no-spreading": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }]
   },
   "settings": {

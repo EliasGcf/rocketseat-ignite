@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { Row } from '@components/utils/Row';
 import { Column } from '@components/utils/Column';
 import { LabelText } from '@components/LabelText';
 
@@ -8,9 +7,9 @@ import {
   CarCategoryIconUri,
   CarImage,
   CarName,
-  CarPrice,
   CarPriceText,
   Container,
+  Footer,
   Main,
 } from './styles';
 
@@ -37,14 +36,14 @@ export function CarCard({
           <CarName>{name}</CarName>
         </Column>
 
-        <Row>
-          <CarPrice>
+        <Footer>
+          <Column>
             <LabelText>ao dia</LabelText>
             <CarPriceText>{formattedPrice}</CarPriceText>
-          </CarPrice>
+          </Column>
 
           <CarCategoryIconUri uri={categoryIconUrl} />
-        </Row>
+        </Footer>
       </Main>
 
       <CarImage source={{ uri: imageUrl }} />

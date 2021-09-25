@@ -2,13 +2,16 @@ import styled, { css } from 'styled-components/native';
 import { SvgUri } from 'react-native-svg';
 
 import { Row } from '@components/utils/Row';
-import { Column } from '@components/utils/Column';
+import { Text } from '@components/react-native/Text';
 
 export const Container = styled(Row)`
-  height: 126px;
   align-items: flex-end;
-  padding: 24px 24px 16px 24px;
-  background: ${({ theme }) => theme.colors.white};
+
+  ${({ theme }) => css`
+    padding: ${theme.spacing[6]}px;
+    background: ${theme.colors.white};
+    height: ${theme.spacing.responsive[32]}px;
+  `};
 `;
 
 export const Main = styled.View`
@@ -17,41 +20,42 @@ export const Main = styled.View`
   justify-content: space-between;
 `;
 
-export const CarName = styled.Text`
+export const CarName = styled(Text)`
   margin: 4px 0 0 0;
 
   ${({ theme }) => css`
-    font-size: ${theme.fontSizes.md}px;
     color: ${theme.colors.aliases.title};
     font-family: ${theme.fonts.aliases.title};
+    font-size: ${theme.fontSizes.responsive.md}px;
   `}
 `;
 
-export const CarPrice = styled(Column)`
-  margin: 0 24px 0 0;
+export const Footer = styled(Row)`
+  align-items: baseline;
 `;
 
-export const CarPriceText = styled.Text`
-  margin: 4px 0 0 0;
-
+export const CarPriceText = styled(Text)`
   ${({ theme }) => css`
     color: ${theme.colors.brand.mid};
-    font-size: ${theme.fontSizes.md}px;
+    margin: ${theme.spacing[1]}px 0 0 0;
     font-family: ${theme.fonts.aliases.title};
+    font-size: ${theme.fontSizes.responsive.md}px;
   `};
 `;
 
-export const CarCategoryIconUri = styled(SvgUri).attrs((props) => {
+export const CarCategoryIconUri = styled(SvgUri).attrs(({ theme }) => {
   return {
-    height: 20,
-    width: 20,
-    fill: props.theme.colors.aliases.label,
+    fill: theme.colors.aliases.label,
+    width: theme.spacing.responsive[5],
+    height: theme.spacing.responsive[5],
   };
 })`
-  margin: auto 0 0 0;
+  margin: 0 0 0 ${({ theme }) => theme.spacing[6]}px;
 `;
 
-export const CarImage = styled.Image`
+export const CarImage = styled.Image.attrs({
+  resizeMode: 'contain',
+})`
   flex: 1;
   height: 100%;
 `;

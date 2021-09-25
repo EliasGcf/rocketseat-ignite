@@ -1,11 +1,14 @@
-import styled from 'styled-components/native';
+import { Text } from '@components/react-native/Text';
+import styled, { css } from 'styled-components/native';
 
 type TextProps = {
   tintColor?: string;
 };
 
-export const Text = styled.Text<TextProps>`
-  color: ${({ tintColor, theme }) => tintColor || theme.colors.gray[500]};
-  font-size: ${({ theme }) => theme.fontSizes.md}px;
-  font-family: ${({ theme }) => theme.fonts.aliases.text};
+export const HeaderText = styled(Text)<TextProps>`
+  ${({ theme, tintColor }) => css`
+    font-size: ${theme.fontSizes.md}px;
+    font-family: ${theme.fonts.aliases.text};
+    color: ${tintColor || theme.colors.gray[500]};
+  `}
 `;

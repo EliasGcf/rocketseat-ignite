@@ -1,12 +1,14 @@
 import styled, { css } from 'styled-components/native';
 
-export const LabelText = styled.Text`
+import { Text } from '@components/react-native/Text';
+
+export const LabelText = styled(Text)`
   letter-spacing: 2px;
   text-transform: uppercase;
 
   ${({ theme }) => css`
-    font-size: ${theme.fontSizes.xxs}px;
     color: ${theme.colors.aliases.label};
     font-family: ${theme.fonts.aliases.label};
+    font-size: ${theme.fontSizes.responsive.xxs}px;
   `};
 `;
