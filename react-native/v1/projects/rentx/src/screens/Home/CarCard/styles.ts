@@ -1,10 +1,12 @@
+import { RectButton } from 'react-native-gesture-handler';
 import styled, { css } from 'styled-components/native';
 import { SvgUri } from 'react-native-svg';
 
 import { Row } from '@components/utils/Row';
 import { Text } from '@components/react-native/Text';
 
-export const Container = styled(Row)`
+export const Container = styled(RectButton)`
+  flex-direction: row;
   align-items: flex-end;
 
   ${({ theme }) => css`

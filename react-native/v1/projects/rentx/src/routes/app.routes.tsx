@@ -10,6 +10,15 @@ import { HomeHeaderText } from '@screens/Home/HomeHeaderText';
 import { CarDetails } from '@screens/CarDetails';
 import { HeaderLeftButton } from '@screens/CarDetails/HeaderLeftButton';
 
+declare global {
+  namespace ReactNavigation {
+    interface RootParamList {
+      Home: undefined;
+      CarDetails: undefined;
+    }
+  }
+}
+
 const Stack = createNativeStackNavigator();
 
 export function AppRoutes() {

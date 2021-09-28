@@ -19,6 +19,7 @@ export type CarCardProps = {
   formattedPrice: string;
   categoryIconUrl: string;
   imageUrl: string;
+  onPress?: () => void;
 };
 
 export function CarCard({
@@ -27,9 +28,10 @@ export function CarCard({
   formattedPrice,
   categoryIconUrl,
   imageUrl,
+  onPress,
 }: CarCardProps) {
   return (
-    <Container>
+    <Container onPress={onPress}>
       <Main>
         <Column>
           <LabelText>{brand}</LabelText>

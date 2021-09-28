@@ -4,6 +4,9 @@ import React from 'react';
 import { Column } from '@components/utils/Column';
 import { LabelText } from '@components/LabelText';
 
+import { SpecificationCard } from '@screens/CarDetails/SpecificationCard';
+
+import { FlatList, View } from 'react-native';
 import {
   CarImage,
   CarInfo,
@@ -17,6 +20,8 @@ import {
   SubmitButton,
   SubmitButtonText,
 } from './styles';
+
+const specifications = [1, 2, 3, 4, 5, 6];
 
 export function CarDetails() {
   return (
@@ -45,11 +50,40 @@ export function CarDetails() {
             </Column>
           </CarInfo>
 
-          <Description>
-            Este é automóvel desportivo. Surgiu do lendário touro de lide indultado na
-            praça Real Maestranza de Sevilla. É um belíssimo carro para quem gosta de
-            acelerar.
-          </Description>
+          {/* To-do:
+            - Move all the FlatList styling to styled-component in ./style.ts
+          */}
+          <View style={{ height: '100%' }}>
+            <FlatList
+              numColumns={3}
+              data={specifications}
+              style={{ marginTop: 16 }}
+              showsVerticalScrollIndicator={false}
+              keyExtractor={(item) => String(item)}
+              ItemSeparatorComponent={() => <View style={{ height: 8 }} />}
+              ListFooterComponentStyle={{ marginTop: 24, paddingBottom: 24 }}
+              ListFooterComponent={() => {
+                return (
+                  <Description>
+                    Este é automóvel desportivo. Surgiu do lendário touro de lide
+                    indultado na praça Real Maestranza de Sevilla. É um belíssimo carro
+                    para quem gosta de acelerar.
+                  </Description>
+                );
+              }}
+              renderItem={({ index }) => {
+                const isLastItemOfRow = index % 3 === 2;
+                const isLastItemOfTotal = index === specifications.length - 1;
+                const shouldHaveMarginRight = !isLastItemOfRow && !isLastItemOfTotal;
+
+                return (
+                  <SpecificationCard
+                    style={{ marginRight: shouldHaveMarginRight ? 8 : 0 }}
+                  />
+                );
+              }}
+            />
+          </View>
         </Main>
 
         <Footer>

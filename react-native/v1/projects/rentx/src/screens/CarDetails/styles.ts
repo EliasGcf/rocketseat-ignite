@@ -27,7 +27,7 @@ export const CarImage = styled.Image.attrs({
 
 export const Main = styled(Column)`
   flex: 1;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 
   ${({ theme }) => css`
     padding: 0 ${theme.spacing.responsive[6]}px 47px;
