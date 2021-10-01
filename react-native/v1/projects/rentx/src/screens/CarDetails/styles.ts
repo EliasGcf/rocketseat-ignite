@@ -1,7 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
 import styled, { css } from 'styled-components/native';
-import { RectButton } from 'react-native-gesture-handler';
 import { getBottomSpace, isIphoneX } from 'react-native-iphone-x-helper';
 
 import { Row } from '@components/utils/Row';
@@ -88,23 +87,5 @@ export const Footer = styled.View`
     background: ${theme.colors.gray[100]};
     padding: ${theme.spacing.responsive[6]}px;
     padding-bottom: ${isIphoneX() ? getBottomSpace() : theme.spacing.responsive[6]}px;
-  `}
-`;
-
-export const SubmitButton = styled(RectButton)`
-  align-items: center;
-  justify-content: center;
-
-  ${({ theme }) => css`
-    background: ${theme.colors.brand.mid};
-    height: ${theme.spacing.responsive[14]}px;
-  `}
-`;
-
-export const SubmitButtonText = styled(Text)`
-  ${({ theme }) => css`
-    color: ${theme.colors.white};
-    font-family: ${theme.fonts.aliases.button};
-    font-size: ${theme.fontSizes.responsive.md}px;
   `}
 `;

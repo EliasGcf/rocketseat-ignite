@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import SpeedSvg from '@assets/svg/speed.svg';
 
+import { Button } from '@components/Button';
 import { Column } from '@components/utils/Column';
 import { LabelText } from '@components/LabelText';
 
@@ -22,8 +23,6 @@ import {
   Footer,
   ImageContainer,
   Main,
-  SubmitButton,
-  SubmitButtonText,
 } from './styles';
 
 const specifications = [1, 2, 3, 4, 5, 6];
@@ -94,9 +93,7 @@ export function CarDetails() {
         </Main>
 
         <Footer>
-          <SubmitButton>
-            <SubmitButtonText>Escolher período do aluguel</SubmitButtonText>
-          </SubmitButton>
+          <Button title="Escolher período do aluguel" />
         </Footer>
       </Container>
     </>
