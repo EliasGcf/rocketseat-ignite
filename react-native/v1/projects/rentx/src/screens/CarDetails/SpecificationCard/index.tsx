@@ -1,19 +1,20 @@
-import { StyleProp, ViewStyle } from 'react-native';
 import React from 'react';
-
-import SpeedSvg from '@assets/svg/speed.svg';
+import { SvgProps } from 'react-native-svg';
+import { StyleProp, ViewStyle } from 'react-native';
 
 import { Container, Title } from './styles';
 
 type SpecificationCardProps = {
   style?: StyleProp<ViewStyle>;
+  title: string;
+  icon: React.FC<SvgProps>;
 };
 
-export function SpecificationCard({ style }: SpecificationCardProps) {
+export function SpecificationCard({ style, title, icon: Icon }: SpecificationCardProps) {
   return (
     <Container style={style}>
-      <SpeedSvg />
-      <Title>380km/h</Title>
+      <Icon />
+      <Title>{title}</Title>
     </Container>
   );
 }

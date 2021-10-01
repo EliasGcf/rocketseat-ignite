@@ -1,3 +1,5 @@
+import React from 'react';
+import { View } from 'react-native';
 import styled, { css } from 'styled-components/native';
 import { RectButton } from 'react-native-gesture-handler';
 import { getBottomSpace, isIphoneX } from 'react-native-iphone-x-helper';
@@ -27,7 +29,6 @@ export const CarImage = styled.Image.attrs({
 
 export const Main = styled(Column)`
   flex: 1;
-  /* justify-content: space-between; */
 
   ${({ theme }) => css`
     padding: 0 ${theme.spacing.responsive[6]}px 47px;
@@ -58,12 +59,26 @@ export const CarPrice = styled(Text)`
   `};
 `;
 
-export const Description = styled(Text)`
-  line-height: 24px;
+export const ContentListWrapper = styled.View`
+  height: 100%;
+`;
 
+export const ContentList = styled.FlatList.attrs(() => {
+  return {
+    numColumns: 3,
+    showsVerticalScrollIndicator: false,
+    ListFooterComponentStyle: { marginTop: 24, paddingBottom: 24 },
+    ItemSeparatorComponent: () => React.createElement(View, { style: { height: 8 } }),
+  };
+})`
+  margin-top: 16px;
+`;
+
+export const Description = styled(Text)`
   ${({ theme }) => css`
     color: ${theme.colors.gray[500]};
     font-family: ${theme.fonts.aliases.text};
+    line-height: ${theme.spacing.responsive[6]}px;
     font-size: ${theme.fontSizes.responsive.md}px;
   `}
 `;

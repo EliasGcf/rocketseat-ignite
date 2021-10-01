@@ -1,18 +1,23 @@
+import React, { useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import { useNavigation } from '@react-navigation/native';
+
+import SpeedSvg from '@assets/svg/speed.svg';
 
 import { Column } from '@components/utils/Column';
 import { LabelText } from '@components/LabelText';
 
+import { HeaderRightItem } from '@screens/CarDetails/HeaderRightItem';
 import { SpecificationCard } from '@screens/CarDetails/SpecificationCard';
 
-import { FlatList, View } from 'react-native';
 import {
   CarImage,
   CarInfo,
   CarName,
   CarPrice,
   Container,
+  ContentListWrapper,
+  ContentList,
   Description,
   Footer,
   ImageContainer,
@@ -24,6 +29,14 @@ import {
 const specifications = [1, 2, 3, 4, 5, 6];
 
 export function CarDetails() {
+  const navigation = useNavigation();
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => <HeaderRightItem dotsQuantity={4} selectedIndex={2} />,
+    });
+  }, [navigation]);
+
   return (
     <>
       <StatusBar style="dark" />
@@ -50,18 +63,10 @@ export function CarDetails() {
             </Column>
           </CarInfo>
 
-          {/* To-do:
-            - Move all the FlatList styling to styled-component in ./style.ts
-          */}
-          <View style={{ height: '100%' }}>
-            <FlatList
-              numColumns={3}
+          <ContentListWrapper>
+            <ContentList
               data={specifications}
-              style={{ marginTop: 16 }}
-              showsVerticalScrollIndicator={false}
               keyExtractor={(item) => String(item)}
-              ItemSeparatorComponent={() => <View style={{ height: 8 }} />}
-              ListFooterComponentStyle={{ marginTop: 24, paddingBottom: 24 }}
               ListFooterComponent={() => {
                 return (
                   <Description>
@@ -78,12 +83,14 @@ export function CarDetails() {
 
                 return (
                   <SpecificationCard
+                    title="380km/h"
+                    icon={SpeedSvg}
                     style={{ marginRight: shouldHaveMarginRight ? 8 : 0 }}
                   />
                 );
               }}
             />
-          </View>
+          </ContentListWrapper>
         </Main>
 
         <Footer>
