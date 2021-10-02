@@ -8,13 +8,16 @@ import { Home } from '@screens/Home';
 import { HomeHeaderText } from '@screens/Home/HomeHeaderText';
 
 import { CarDetails } from '@screens/CarDetails';
-import { HeaderLeftButton } from '@screens/CarDetails/HeaderLeftButton';
+
+import { Scheduling } from '@screens/Scheduling';
+import { HeaderGoBackButton } from '@components/HeaderGoBackButton';
 
 declare global {
   namespace ReactNavigation {
     interface RootParamList {
       Home: undefined;
       CarDetails: undefined;
+      Scheduling: undefined;
     }
   }
 }
@@ -44,7 +47,22 @@ export function AppRoutes() {
         options={{
           title: '',
           headerShadowVisible: false,
-          headerLeft: HeaderLeftButton,
+          headerTintColor: theme.colors.aliases.text,
+          headerLeft: HeaderGoBackButton,
+          animation: 'slide_from_right',
+        }}
+      />
+
+      <Stack.Screen
+        name="Scheduling"
+        component={Scheduling}
+        options={{
+          title: '',
+          headerTintColor: '#fff',
+          headerShadowVisible: false,
+          headerStyle: { backgroundColor: theme.colors.black },
+          headerLeft: HeaderGoBackButton,
+          animation: 'slide_from_right',
         }}
       />
     </Stack.Navigator>

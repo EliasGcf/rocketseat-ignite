@@ -5,13 +5,16 @@ import { useNavigation } from '@react-navigation/native';
 
 import { ButtonContainer } from './styles';
 
-export function HeaderLeftButton() {
-  const theme = useTheme();
+type HeaderGoBackButtonProps = {
+  tintColor?: string;
+};
+
+export function HeaderGoBackButton({ tintColor }: HeaderGoBackButtonProps) {
   const navigation = useNavigation();
 
   return (
     <ButtonContainer onPress={navigation.goBack}>
-      <Feather name="chevron-left" size={24} color={theme.colors.aliases.text} />
+      <Feather name="chevron-left" size={24} color={tintColor} />
     </ButtonContainer>
   );
 }

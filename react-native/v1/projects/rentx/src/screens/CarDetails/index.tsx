@@ -93,7 +93,10 @@ export function CarDetails() {
         </Main>
 
         <Footer>
-          <Button title="Escolher período do aluguel" />
+          <Button
+            title="Escolher período do aluguel"
+            onPress={() => navigation.navigate('Scheduling')}
+          />
         </Footer>
       </Container>
     </>
