@@ -24,6 +24,7 @@ export class GamesRepository implements IGamesRepository {
   }
 
   async findUsersByGameId(id: string): Promise<User[]> {
+    // https://github.com/typeorm/typeorm/blob/master/docs/relational-query-builder.md#working-with-relations
     return this.repository
       .createQueryBuilder()
       .relation('users')
