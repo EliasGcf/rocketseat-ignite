@@ -6,12 +6,14 @@ import ArrowRight from '@assets/svg/arrow-right.svg';
 import { Row } from '@components/utils/Row';
 import { Column } from '@components/utils/Column';
 import { Text } from '@components/react-native/Text';
+import { getBottomSpace, isIphoneX } from 'react-native-iphone-x-helper';
 
 export const Container = styled.View`
   flex: 1;
+  background-color: ${({ theme }) => theme.colors.white};
 `;
 
-export const Content = styled.View`
+export const Header = styled.View`
   ${({ theme }) => css`
     background: ${theme.colors.black};
     padding-top: ${theme.spacing.responsive[6]}px;
@@ -72,4 +74,14 @@ export const Arrow = styled.View.attrs(({ theme }) => {
   flex: 1;
   align-items: center;
   justify-content: center;
+`;
+
+export const Footer = styled.View`
+  margin-top: auto;
+
+  ${({ theme }) => css`
+    padding-right: ${theme.spacing.responsive[6]}px;
+    padding-left: ${theme.spacing.responsive[6]}px;
+    padding-bottom: ${isIphoneX() ? getBottomSpace() : theme.spacing.responsive[6]}px;
+  `}
 `;

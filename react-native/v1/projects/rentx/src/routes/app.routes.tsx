@@ -28,7 +28,7 @@ export function AppRoutes() {
   const theme = useTheme();
 
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName="Scheduling">
       <Stack.Screen
         name="Home"
         component={Home}
