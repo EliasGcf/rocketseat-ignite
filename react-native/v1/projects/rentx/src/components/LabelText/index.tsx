@@ -1,14 +1,12 @@
-import styled, { css } from 'styled-components/native';
+import { styled } from 'stitches.config';
 
 import { Text } from '@components/react-native/Text';
 
-export const LabelText = styled(Text)`
-  letter-spacing: 2px;
-  text-transform: uppercase;
+export const LabelText = styled(Text, {
+  letterSpacing: 2,
+  textTransform: 'uppercase',
 
-  ${({ theme }) => css`
-    color: ${theme.colors.aliases.label};
-    font-family: ${theme.fonts.aliases.label};
-    font-size: ${theme.fontSizes.responsive.xxs}px;
-  `};
-`;
+  color: '$label',
+  fontFamily: '$label',
+  fontSize: '$responsive.xxs',
+});

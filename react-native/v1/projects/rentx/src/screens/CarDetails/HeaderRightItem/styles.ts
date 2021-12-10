@@ -1,19 +1,22 @@
-import styled, { css } from 'styled-components/native';
+import { styled, theme } from 'stitches.config';
 
-type DotProps = {
-  isActive: boolean;
-  shouldHaveSpacing?: boolean;
-};
+export const Dot = styled('View', {
+  borderRadius: 9999,
+  width: theme.sizes['responsive.3'] / 2,
+  height: theme.sizes['responsive.3'] / 2,
+  backgroundColor: '$gray.300',
 
-export const Dot = styled.View<DotProps>`
-  border-radius: 9999px;
+  variants: {
+    isActive: {
+      true: {
+        backgroundColor: '$title',
+      },
+    },
 
-  ${({ theme, isActive, shouldHaveSpacing }) => css`
-    width: ${theme.spacing.responsive[3] / 2}px;
-    height: ${theme.spacing.responsive[3] / 2}px;
-
-    background: ${isActive ? theme.colors.aliases.title : theme.colors.gray[300]};
-
-    ${shouldHaveSpacing && 'margin-right: 8px'};
-  `}
-`;
+    shouldHaveSpacing: {
+      true: {
+        marginRight: 8,
+      },
+    },
+  },
+});

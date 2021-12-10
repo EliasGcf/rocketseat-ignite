@@ -19,7 +19,7 @@ export function Home() {
           brand="audi"
           name="RS 5 Coupé"
           formattedPrice="R$ 120"
-          imageUrl="https://res.cloudinary.com/eliasgcf/image/upload/v1632353816/Audi_fadfhy.png"
+          imageUrl="https://res.cloudinary.com/eliasgcf/image/upload/v1632353816/rentx/Audi_fadfhy.png"
           categoryIconUrl="https://res.cloudinary.com/eliasgcf/image/upload/v1632354657/rentx/svg/energy_slf0c5.svg"
         />
       </Container>

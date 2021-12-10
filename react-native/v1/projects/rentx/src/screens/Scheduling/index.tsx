@@ -34,14 +34,14 @@ export function Scheduling() {
           <WrapperDateInfo>
             <DateInfo>
               <LabelText>de</LabelText>
-              <DateText value={startDate} />
+              <DateText editable={false} value={startDate} isField={!!startDate} />
             </DateInfo>
 
             <Arrow />
 
             <DateInfo>
               <LabelText>até</LabelText>
-              <DateText value={endDate} />
+              <DateText editable={false} value={endDate} isField={!!endDate} />
             </DateInfo>
           </WrapperDateInfo>
         </Header>

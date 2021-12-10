@@ -1,6 +1,7 @@
 import React from 'react';
-import { useTheme } from 'styled-components';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import { theme } from 'stitches.config';
 
 import RentxLogo from '@assets/svg/rentx-logo.svg';
 
@@ -25,8 +26,6 @@ declare global {
 const Stack = createNativeStackNavigator();
 
 export function AppRoutes() {
-  const theme = useTheme();
-
   return (
     <Stack.Navigator initialRouteName="Scheduling">
       <Stack.Screen
@@ -34,7 +33,7 @@ export function AppRoutes() {
         component={Home}
         options={{
           title: '',
-          headerTintColor: theme.colors.gray[500],
+          headerTintColor: theme.colors['gray.500'],
           headerStyle: { backgroundColor: theme.colors.black },
           headerRight: HomeHeaderText,
           headerLeft: () => <RentxLogo />,
@@ -47,7 +46,7 @@ export function AppRoutes() {
         options={{
           title: '',
           headerShadowVisible: false,
-          headerTintColor: theme.colors.aliases.text,
+          headerTintColor: theme.colors['gray.500'],
           headerLeft: HeaderGoBackButton,
           animation: 'slide_from_right',
         }}

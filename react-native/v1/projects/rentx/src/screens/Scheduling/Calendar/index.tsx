@@ -1,7 +1,8 @@
 import { Feather } from '@expo/vector-icons';
 import React from 'react';
 import { Calendar as RNCalendar, LocaleConfig } from 'react-native-calendars';
-import { useTheme } from 'styled-components';
+
+import { theme } from 'stitches.config';
 
 LocaleConfig.locales['pt-br'] = {
   monthNames: [
@@ -39,30 +40,28 @@ LocaleConfig.locales['pt-br'] = {
 LocaleConfig.defaultLocale = 'pt-br';
 
 export function Calendar() {
-  const theme = useTheme();
-
   return (
     <RNCalendar
       theme={{
-        textDayFontFamily: theme.fonts.inter.regular,
+        textDayFontFamily: theme.fonts['inter.regular'],
         textDayFontSize: 15,
-        textDayHeaderFontFamily: theme.fonts.archivo.semiBold,
+        textDayHeaderFontFamily: theme.fonts['archivo.semiBold'],
         textDayHeaderFontSize: 10,
-        monthTextColor: theme.colors.aliases.title,
-        textMonthFontFamily: theme.fonts.archivo.semiBold,
+        monthTextColor: theme.colors['gray.600'],
+        textMonthFontFamily: theme.fonts['archivo.semiBold'],
         textMonthFontSize: 20,
-        selectedDayTextColor: theme.colors.brand.mid,
+        selectedDayTextColor: theme.colors['brand.mid'],
       }}
       headerStyle={{
-        borderBottomWidth: theme.spacing.responsive.px,
-        borderBottomColor: theme.colors.gray[200],
+        borderBottomWidth: theme.space['responsive.px'],
+        borderBottomColor: theme.colors['gray.200'],
         paddingBottom: 8,
         marginBottom: 20,
       }}
       renderArrow={(direction) => (
         <Feather
           size={24}
-          color={theme.colors.aliases.text}
+          color={theme.colors['gray.500']}
           name={direction === 'left' ? 'chevron-left' : 'chevron-right'}
         />
       )}

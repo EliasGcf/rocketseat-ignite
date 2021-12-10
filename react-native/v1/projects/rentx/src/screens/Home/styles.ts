@@ -1,6 +1,6 @@
-import styled from 'styled-components/native';
+import { styled } from 'stitches.config';
 
-export const Container = styled.View`
-  flex: 1;
-  padding: ${({ theme }) => theme.spacing.responsive[4]}px;
-`;
+export const Container = styled('View', {
+  flex: 1,
+  padding: '$responsive.4',
+});

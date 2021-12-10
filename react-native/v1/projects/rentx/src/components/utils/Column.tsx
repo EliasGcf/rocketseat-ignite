@@ -1,5 +1,5 @@
-import styled from 'styled-components/native';
+import { styled } from 'stitches.config';
 
-export const Column = styled.View`
-  flex-direction: column;
-`;
+export const Column = styled('View', {
+  flexDirection: 'column',
+});

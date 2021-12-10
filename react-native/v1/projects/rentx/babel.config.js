@@ -10,6 +10,7 @@ module.exports = function (api) {
           extensions: ['.ts', '.tsx'],
           alias: {
             src: './src',
+            'stitches.config': './stitches.config',
             '@global': './src/global',
             '@assets': './src/assets',
             '@components': './src/components',

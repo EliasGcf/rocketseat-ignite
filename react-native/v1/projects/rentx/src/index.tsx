@@ -1,7 +1,6 @@
 import React from 'react';
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
-import { ThemeProvider } from 'styled-components';
 import { Inter_400Regular, Inter_500Medium } from '@expo-google-fonts/inter';
 import {
   Archivo_500Medium,
@@ -9,7 +8,6 @@ import {
   Archivo_600SemiBold,
 } from '@expo-google-fonts/archivo';
 
-import { theme } from '@global/theme';
 import { Routes } from '@routes/index.routes';
 
 export function RentxApp() {
@@ -26,9 +24,5 @@ export function RentxApp() {
     return <AppLoading />;
   }
 
-  return (
-    <ThemeProvider theme={theme}>
-      <Routes />
-    </ThemeProvider>
-  );
+  return <Routes />;
 }

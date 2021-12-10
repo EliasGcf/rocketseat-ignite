@@ -33,14 +33,13 @@
     "react-native-size-matters": "^0.4.0",
     "react-native-svg": "12.1.1",
     "react-native-unimodules": "~0.14.5",
-    "styled-components": "^5.3.1"
+    "stitches-native": "^0.0.1-9"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@types/react": "~16.9.35",
     "@types/react-native": "~0.63.2",
     "@types/react-native-calendars": "^1.1264.2",
-    "@types/styled-components-react-native": "^5.1.1",
     "@typescript-eslint/eslint-plugin": "^4.31.2",
     "@typescript-eslint/parser": "^4.31.2",
     "babel-plugin-module-resolver": "^4.1.0",
