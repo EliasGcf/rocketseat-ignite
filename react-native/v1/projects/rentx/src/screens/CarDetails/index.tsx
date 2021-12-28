@@ -10,6 +10,7 @@ import { LabelText } from '@components/LabelText';
 
 import { HeaderRightItem } from '@screens/CarDetails/HeaderRightItem';
 import { SpecificationCard } from '@screens/CarDetails/SpecificationCard';
+import { ScheduleDetails } from '@screens/CarDetails/ScheduleDetails';
 
 import {
   CarImage,
@@ -29,6 +30,10 @@ const specifications = [1, 2, 3, 4, 5, 6];
 
 export function CarDetails() {
   const navigation = useNavigation();
+  const startDate = '18/06/2021';
+  const endDate = '18/06/2021';
+
+  const hasRentTime = !!startDate && !!endDate;
 
   useEffect(() => {
     navigation.setOptions({
@@ -67,7 +72,9 @@ export function CarDetails() {
               data={specifications}
               keyExtractor={(item) => String(item)}
               ListFooterComponent={() => {
-                return (
+                return hasRentTime ? (
+                  <ScheduleDetails startDate={startDate} endDate={endDate} />
+                ) : (
                   <Description>
                     Este é automóvel desportivo. Surgiu do lendário touro de lide
                     indultado na praça Real Maestranza de Sevilla. É um belíssimo carro
@@ -92,9 +99,10 @@ export function CarDetails() {
           </ContentListWrapper>
         </Main>
 
-        <Footer>
+        <Footer hasRentTime={hasRentTime}>
           <Button
             title="Escolher período do aluguel"
+            variant={hasRentTime ? 'success' : 'primary'}
             onPress={() => navigation.navigate('Scheduling')}
           />
         </Footer>

@@ -27,7 +27,7 @@ const Stack = createNativeStackNavigator();
 
 export function AppRoutes() {
   return (
-    <Stack.Navigator initialRouteName="Scheduling">
+    <Stack.Navigator initialRouteName="CarDetails">
       <Stack.Screen
         name="Home"
         component={Home}

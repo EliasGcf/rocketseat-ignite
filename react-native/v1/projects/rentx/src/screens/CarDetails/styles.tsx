@@ -1,5 +1,13 @@
 import React from 'react';
-import { FlatList, FlatListProps, Image, ImageProps, View } from 'react-native';
+import {
+  FlatList,
+  FlatListProps,
+  Image,
+  ImageProps,
+  View,
+  ViewProps,
+} from 'react-native';
+
 import { getBottomSpace, isIphoneX } from 'react-native-iphone-x-helper';
 
 import { styled, theme } from 'stitches.config';
@@ -84,4 +92,12 @@ export const Footer = styled('View', {
   backgroundColor: '$gray.100',
   padding: '$responsive.6',
   paddingBottom: isIphoneX() ? getBottomSpace() : theme.space['responsive.6'],
+
+  variants: {
+    hasRentTime: {
+      true: {
+        backgroundColor: '$white',
+      },
+    },
+  },
 });
