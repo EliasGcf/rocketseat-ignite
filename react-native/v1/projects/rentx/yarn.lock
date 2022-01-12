@@ -6998,10 +6998,10 @@ static-extend@^0.1.1:
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.5.0.tgz#161c7dac177659fd9811f43771fa99381478628c"
   integrity sha1-Fhx9rBd2Wf2YEfQ3cfqZOBR4Yow=
 
-stitches-native@^0.0.1-9:
-  version "0.0.1-9"
-  resolved "https://registry.yarnpkg.com/stitches-native/-/stitches-native-0.0.1-9.tgz#ec647dafbe925baa0d9b546eb0a9d80eead71485"
-  integrity sha512-4z0PFC+BdJ9DmUnZQ6gunClwx/NzCiV0kKj1R9YUrwG6WUkyC5YLcqKrt1dNHRg4Ed33H1jz5CEP0yY/NPGxJA==
+stitches-native@^0.0.1-12:
+  version "0.0.1-12"
+  resolved "https://registry.yarnpkg.com/stitches-native/-/stitches-native-0.0.1-12.tgz#0e99acedafb7a896a29903e6ba6a2709866470c1"
+  integrity sha512-oE0FVUpNSle8jM02iyO7CjpiOzTMZ3x6HsfQ6FfPnOnROeo4jXGY01b0z3GeHow8Bf7K9As32MCtJKoNer0uaA==
   dependencies:
     lodash.merge "4.6.2"
 
