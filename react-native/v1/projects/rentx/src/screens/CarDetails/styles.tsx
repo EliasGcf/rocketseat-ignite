@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  FlatList,
-  FlatListProps,
-  Image,
-  ImageProps,
-  View,
-  ViewProps,
-} from 'react-native';
+import { FlatList, FlatListProps, Image, ImageProps, View } from 'react-native';
 
 import { getBottomSpace, isIphoneX } from 'react-native-iphone-x-helper';
 
