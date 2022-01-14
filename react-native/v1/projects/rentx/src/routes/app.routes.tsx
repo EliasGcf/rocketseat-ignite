@@ -12,6 +12,7 @@ import { CarDetails } from '@screens/CarDetails';
 
 import { Scheduling } from '@screens/Scheduling';
 import { HeaderGoBackButton } from '@components/HeaderGoBackButton';
+import { SchedulingComplete } from '@screens/SchedulingComplete';
 
 declare global {
   namespace ReactNavigation {
@@ -27,7 +28,7 @@ const Stack = createNativeStackNavigator();
 
 export function AppRoutes() {
   return (
-    <Stack.Navigator initialRouteName="CarDetails">
+    <Stack.Navigator initialRouteName="SchedulingComplete">
       <Stack.Screen
         name="Home"
         component={Home}
@@ -62,6 +63,15 @@ export function AppRoutes() {
           headerStyle: { backgroundColor: theme.colors.black },
           headerLeft: HeaderGoBackButton,
           animation: 'slide_from_right',
+        }}
+      />
+
+      <Stack.Screen
+        name="SchedulingComplete"
+        component={SchedulingComplete}
+        options={{
+          title: '',
+          headerShown: false,
         }}
       />
     </Stack.Navigator>

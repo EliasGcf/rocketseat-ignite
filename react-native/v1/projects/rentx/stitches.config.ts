@@ -27,9 +27,11 @@ export const spaces = {
   '44': 176,
   '48': 192,
   '56': 224,
+  '58': 235,
   '64': 256,
   '72': 288,
   '80': 320,
+  '93': 375,
   '96': 384,
 } as const;
 
@@ -94,6 +96,7 @@ export const {
       'gray.400': '#AEAEB3',
       'gray.500': '#7A7A80',
       'gray.600': '#47474D',
+      'gray.800': '#29292E',
 
       text: '$gray.500',
       label: '$gray.400',
@@ -131,6 +134,11 @@ export const {
     },
 
     borderWidths: {
+      ...spaces,
+      ...responsiveSpaces,
+    },
+
+    lineHeights: {
       ...spaces,
       ...responsiveSpaces,
     },
