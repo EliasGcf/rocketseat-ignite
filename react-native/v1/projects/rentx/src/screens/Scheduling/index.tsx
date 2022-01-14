@@ -1,5 +1,6 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
+import { useNavigation } from '@react-navigation/native';
 
 import { Button } from '@components/Button';
 import { LabelText } from '@components/LabelText';
@@ -18,6 +19,8 @@ import {
 } from './styles';
 
 export function Scheduling() {
+  const navigation = useNavigation();
+
   const startDate = '18/06/2021';
   const endDate = '18/06/2021';
 
@@ -49,7 +52,11 @@ export function Scheduling() {
         <Calendar />
 
         <Footer>
-          <Button title="Confirmar" />
+          <Button
+            title="Confirmar"
+            enabled={!!startDate && !!endDate}
+            onPress={() => navigation.navigate('CarDetails', { startDate, endDate })}
+          />
         </Footer>
       </Container>
     </>

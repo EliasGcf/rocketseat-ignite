@@ -28,10 +28,21 @@ import {
 
 const specifications = [1, 2, 3, 4, 5, 6];
 
-export function CarDetails() {
+export type CarDetailsRouteParams = {
+  startDate?: string;
+  endDate?: string;
+};
+
+type CarDetailsProps = {
+  route: {
+    params: CarDetailsRouteParams;
+  };
+};
+
+export function CarDetails({ route }: CarDetailsProps) {
   const navigation = useNavigation();
-  const startDate = '18/06/2021';
-  const endDate = '18/06/2021';
+
+  const { startDate, endDate } = route.params;
 
   const hasRentTime = !!startDate && !!endDate;
 
@@ -40,6 +51,14 @@ export function CarDetails() {
       headerRight: () => <HeaderRightItem dotsQuantity={4} selectedIndex={2} />,
     });
   }, [navigation]);
+
+  function handleFooterButtonPress() {
+    if (hasRentTime) {
+      navigation.reset({ routes: [{ name: 'SchedulingComplete' }] });
+    } else {
+      navigation.navigate('Scheduling');
+    }
+  }
 
   return (
     <>
@@ -101,9 +120,9 @@ export function CarDetails() {
 
         <Footer hasRentTime={hasRentTime}>
           <Button
-            title="Escolher período do aluguel"
+            title={hasRentTime ? 'Alugar agora' : 'Escolher período do aluguel'}
             variant={hasRentTime ? 'success' : 'primary'}
-            onPress={() => navigation.navigate('Scheduling')}
+            onPress={handleFooterButtonPress}
           />
         </Footer>
       </Container>

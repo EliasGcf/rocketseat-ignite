@@ -8,7 +8,7 @@ import RentxLogo from '@assets/svg/rentx-logo.svg';
 import { Home } from '@screens/Home';
 import { HomeHeaderText } from '@screens/Home/HomeHeaderText';
 
-import { CarDetails } from '@screens/CarDetails';
+import { CarDetails, CarDetailsRouteParams } from '@screens/CarDetails';
 
 import { Scheduling } from '@screens/Scheduling';
 import { HeaderGoBackButton } from '@components/HeaderGoBackButton';
@@ -18,8 +18,9 @@ declare global {
   namespace ReactNavigation {
     interface RootParamList {
       Home: undefined;
-      CarDetails: undefined;
+      CarDetails: CarDetailsRouteParams;
       Scheduling: undefined;
+      SchedulingComplete: undefined;
     }
   }
 }
@@ -28,7 +29,7 @@ const Stack = createNativeStackNavigator();
 
 export function AppRoutes() {
   return (
-    <Stack.Navigator initialRouteName="SchedulingComplete">
+    <Stack.Navigator initialRouteName="Home">
       <Stack.Screen
         name="Home"
         component={Home}

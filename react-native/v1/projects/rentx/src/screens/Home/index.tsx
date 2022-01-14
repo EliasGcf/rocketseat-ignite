@@ -15,7 +15,7 @@ export function Home() {
 
       <Container>
         <CarCard
-          onPress={() => navigation.navigate('CarDetails')}
+          onPress={() => navigation.navigate('CarDetails', {})}
           brand="audi"
           name="RS 5 Coupé"
           formattedPrice="R$ 120"

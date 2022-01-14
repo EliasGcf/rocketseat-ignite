@@ -1,5 +1,6 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
+import { useNavigation } from '@react-navigation/native';
 
 import {
   Button,
@@ -12,6 +13,8 @@ import {
 } from './styles';
 
 export function SchedulingComplete() {
+  const navigation = useNavigation();
+
   return (
     <>
       <StatusBar style="light" />
@@ -28,7 +31,7 @@ export function SchedulingComplete() {
           pegar o seu automóvel.
         </Message>
 
-        <Button>
+        <Button onPress={() => navigation.reset({ routes: [{ name: 'Home' }] })}>
           <ButtonText>Ok</ButtonText>
         </Button>
       </Container>
