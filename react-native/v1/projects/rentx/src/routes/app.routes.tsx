@@ -6,7 +6,6 @@ import { theme } from 'stitches.config';
 import RentxLogo from '@assets/svg/rentx-logo.svg';
 
 import { Home } from '@screens/Home';
-import { HomeHeaderText } from '@screens/Home/HomeHeaderText';
 
 import { CarDetails, CarDetailsRouteParams } from '@screens/CarDetails';
 
@@ -35,9 +34,7 @@ export function AppRoutes() {
         component={Home}
         options={{
           title: '',
-          headerTintColor: theme.colors['gray.500'],
           headerStyle: { backgroundColor: theme.colors.black },
-          headerRight: HomeHeaderText,
           headerLeft: () => <RentxLogo />,
         }}
       />

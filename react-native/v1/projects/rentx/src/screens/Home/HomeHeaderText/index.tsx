@@ -3,9 +3,9 @@ import React from 'react';
 import { HeaderText } from './styles';
 
 type HomeHeaderTextProps = {
-  tintColor?: string;
+  totalCars: number;
 };
 
-export function HomeHeaderText({ tintColor }: HomeHeaderTextProps) {
-  return <HeaderText tintColor={tintColor}>Total de 12 carros</HeaderText>;
+export function HomeHeaderText({ totalCars }: HomeHeaderTextProps) {
+  return <HeaderText>Total de {totalCars} carros</HeaderText>;
 }
