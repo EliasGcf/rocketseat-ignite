@@ -1,14 +1,14 @@
 import React from 'react';
+import { View, ViewProps } from 'react-native';
+import { getBottomSpace, isIphoneX } from 'react-native-iphone-x-helper';
 
 import { styled, theme } from 'stitches.config';
 
 import ArrowRight from '@assets/svg/arrow-right.svg';
 
-import { Row } from '@components/utils/Row';
-import { Column } from '@components/utils/Column';
 import { Text } from '@components/react-native/Text';
-import { getBottomSpace, isIphoneX } from 'react-native-iphone-x-helper';
-import { View, ViewProps } from 'react-native';
+import { Column } from '@components/utils/Column';
+import { Row } from '@components/utils/Row';
 
 export const Container = styled('View', {
   flex: 1,

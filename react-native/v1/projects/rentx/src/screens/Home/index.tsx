@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { StatusBar } from 'expo-status-bar';
+
 import { useNavigation } from '@react-navigation/native';
+import { StatusBar } from 'expo-status-bar';
+
+import { carSpecificationsIcons } from '@utils/carSpecificationsIcons';
+import { formatPrice } from '@utils/formatPrice';
 
 import { api } from '@services/api';
 
-import { formatPrice } from '@utils/formatPrice';
-import { carSpecificationsIcons } from '@utils/carSpecificationsIcons';
+import { Loading } from '@components/Loading';
 
 import { CarCard } from '@screens/Home/CarCard';
-
-import { Loading } from '@components/Loading';
 import { HomeHeaderText } from '@screens/Home/HomeHeaderText';
 
 import { CarList, Container } from './styles';

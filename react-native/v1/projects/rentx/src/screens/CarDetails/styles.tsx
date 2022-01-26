@@ -1,13 +1,12 @@
 import React from 'react';
 import { FlatList, FlatListProps, Image, ImageProps, View } from 'react-native';
-
 import { getBottomSpace, isIphoneX } from 'react-native-iphone-x-helper';
 
 import { styled, theme } from 'stitches.config';
 
-import { Row } from '@components/utils/Row';
-import { Column } from '@components/utils/Column';
 import { Text } from '@components/react-native/Text';
+import { Column } from '@components/utils/Column';
+import { Row } from '@components/utils/Row';
 
 export const Container = styled('View', {
   flex: 1,

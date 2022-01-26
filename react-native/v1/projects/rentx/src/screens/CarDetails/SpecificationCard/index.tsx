@@ -1,6 +1,6 @@
 import React from 'react';
-import { SvgProps } from 'react-native-svg';
 import { StyleProp, ViewStyle } from 'react-native';
+import { SvgProps } from 'react-native-svg';
 
 import { Container, Title } from './styles';
 

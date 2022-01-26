@@ -4,8 +4,8 @@ import { RectButton, RectButtonProps } from 'react-native-gesture-handler';
 
 import { styled } from 'stitches.config';
 
-import { Row } from '@components/utils/Row';
 import { Text } from '@components/react-native/Text';
+import { Row } from '@components/utils/Row';
 
 export const Container = styled(RectButton as unknown as FC<RectButtonProps>, {
   flexDirection: 'row',

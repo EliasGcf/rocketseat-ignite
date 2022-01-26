@@ -1,6 +1,7 @@
-import { Feather } from '@expo/vector-icons';
 import React from 'react';
 import { Calendar as RNCalendar, LocaleConfig } from 'react-native-calendars';
+
+import { Feather } from '@expo/vector-icons';
 
 import { theme } from 'stitches.config';
 

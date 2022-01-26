@@ -1,7 +1,7 @@
 import { styled } from 'stitches.config';
 
-import AssetXLogoSvg from '@assets/svg/x-logo.svg';
 import AssetDoneSvg from '@assets/svg/done.svg';
+import AssetXLogoSvg from '@assets/svg/x-logo.svg';
 
 export const Container = styled('View', {
   flex: 1,

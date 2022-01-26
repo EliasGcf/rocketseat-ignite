@@ -1,14 +1,15 @@
 import React from 'react';
 import { View, ViewProps } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
 
-import CalendarSvg from '@assets/svg/calendar.svg';
+import { Ionicons } from '@expo/vector-icons';
 
 import { styled, theme } from 'stitches.config';
 
-import { Row } from '@components/utils/Row';
-import { Column } from '@components/utils/Column';
+import CalendarSvg from '@assets/svg/calendar.svg';
+
 import { Text } from '@components/react-native/Text';
+import { Column } from '@components/utils/Column';
+import { Row } from '@components/utils/Row';
 
 export const WrapperDateInfo = styled(Row, {
   justifyContent: 'space-between',

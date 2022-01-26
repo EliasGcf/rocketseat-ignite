@@ -1,8 +1,8 @@
 import React from 'react';
 import { SvgProps } from 'react-native-svg';
 
-import { Column } from '@components/utils/Column';
 import { LabelText } from '@components/LabelText';
+import { Column } from '@components/utils/Column';
 
 import { CarImage, CarName, CarPriceText, Container, Footer, Main } from './styles';
 

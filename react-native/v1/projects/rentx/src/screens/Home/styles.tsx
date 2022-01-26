@@ -1,9 +1,10 @@
 import React from 'react';
 import { FlatList, FlatListProps, View } from 'react-native';
+import { getBottomSpace, isIphoneX } from 'react-native-iphone-x-helper';
+
 import { styled } from 'stitches.config';
 
 import { Car } from '@screens/Home';
-import { getBottomSpace, isIphoneX } from 'react-native-iphone-x-helper';
 
 export const Container = styled('View', {
   flex: 1,

@@ -2,14 +2,15 @@ import 'intl';
 import 'intl/locale-data/jsonp/pt-BR';
 
 import React from 'react';
-import { useFonts } from 'expo-font';
-import AppLoading from 'expo-app-loading';
-import { Inter_400Regular, Inter_500Medium } from '@expo-google-fonts/inter';
+
 import {
   Archivo_500Medium,
   Archivo_400Regular,
   Archivo_600SemiBold,
 } from '@expo-google-fonts/archivo';
+import { Inter_400Regular, Inter_500Medium } from '@expo-google-fonts/inter';
+import AppLoading from 'expo-app-loading';
+import { useFonts } from 'expo-font';
 
 import { Routes } from '@routes/index.routes';
 

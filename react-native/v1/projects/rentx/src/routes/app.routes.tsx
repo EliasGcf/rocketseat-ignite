@@ -1,16 +1,16 @@
 import React from 'react';
+
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { theme } from 'stitches.config';
 
 import RentxLogo from '@assets/svg/rentx-logo.svg';
 
-import { Home } from '@screens/Home';
+import { HeaderGoBackButton } from '@components/HeaderGoBackButton';
 
 import { CarDetails, CarDetailsRouteParams } from '@screens/CarDetails';
-
+import { Home } from '@screens/Home';
 import { Scheduling } from '@screens/Scheduling';
-import { HeaderGoBackButton } from '@components/HeaderGoBackButton';
 import { SchedulingComplete } from '@screens/SchedulingComplete';
 
 declare global {

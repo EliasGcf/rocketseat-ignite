@@ -13,7 +13,7 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint", "react-hooks", "prettier"],
+  "plugins": ["react", "@typescript-eslint", "react-hooks", "import-helpers", "prettier"],
   "rules": {
     "prettier/prettier": "error",
     "camelcase": "off",
@@ -30,7 +30,27 @@
     "react/react-in-jsx-scope": "off",
     "react/require-default-props": "off",
     "react/jsx-props-no-spreading": "off",
-    "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }]
+    "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
+    "import-helpers/order-imports": [
+      "warn",
+      {
+        "newlinesBetween": "always",
+        "groups": [
+          "/^react/",
+          "module",
+          "/^stitches.config/",
+          "/^@assets/",
+          "/^@utils/",
+          "/^@services/",
+          "/^@components/",
+          "/^@routes/",
+          "/^@screens/",
+          ["parent", "sibling"],
+          "index"
+        ],
+        "alphabetize": { "order": "asc", "ignoreCase": true }
+      }
+    ]
   },
   "settings": {
     "import/resolver": { "typescript": {} }
