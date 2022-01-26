@@ -60,7 +60,7 @@ export const ContentListWrapper = styled('View', {
 });
 
 export const ContentList = styled(
-  (props: FlatListProps<number>) => (
+  (props: FlatListProps<{ type: string; name: string }>) => (
     <FlatList
       {...props}
       numColumns={3}

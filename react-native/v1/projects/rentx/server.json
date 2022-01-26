@@ -8,7 +8,7 @@
       "rent": { "period": "Ao dia", "price": 120 },
       "fuel_type": "electric",
       "thumbnail": "https://storage.googleapis.com/golden-wind/ignite/react-native/thumbnails/1.png",
-      "accessories": [
+      "specifications": [
         { "type": "speed", "name": "250km/h" },
         { "type": "acceleration", "name": "3.8s" },
         { "type": "turning_diameter", "name": "800 HP" },
@@ -30,7 +30,7 @@
       "rent": { "period": "Ao dia", "price": 340 },
       "fuel_type": "gasoline_motor",
       "thumbnail": "https://storage.googleapis.com/golden-wind/ignite/react-native/thumbnails/2.png",
-      "accessories": [
+      "specifications": [
         { "type": "speed", "name": "315km/h" },
         { "type": "acceleration", "name": "2.9s" },
         { "type": "turning_diameter", "name": "700 HP" },
@@ -51,7 +51,7 @@
       "rent": { "period": "Ao dia", "price": 620 },
       "fuel_type": "gasoline_motor",
       "thumbnail": "https://storage.googleapis.com/golden-wind/ignite/react-native/thumbnails/3.png",
-      "accessories": [
+      "specifications": [
         { "type": "speed", "name": "330km/h" },
         { "type": "acceleration", "name": "6.2s" },
         { "type": "turning_diameter", "name": "900 HP" },
@@ -73,7 +73,7 @@
       "rent": { "period": "Ao dia", "price": 120 },
       "fuel_type": "electric_motor",
       "thumbnail": "https://storage.googleapis.com/golden-wind/ignite/react-native/thumbnails/4.png",
-      "accessories": [
+      "specifications": [
         { "type": "speed", "name": "380km/h" },
         { "type": "acceleration", "name": "3.2s" },
         { "type": "turning_diameter", "name": "800 HP" },
@@ -95,7 +95,7 @@
       "rent": { "period": "Ao dia", "price": 120 },
       "fuel_type": "gasoline_motor",
       "thumbnail": "https://storage.googleapis.com/golden-wind/ignite/react-native/thumbnails/5.png",
-      "accessories": [
+      "specifications": [
         { "type": "speed", "name": "180km/h" },
         { "type": "acceleration", "name": "1.5s" },
         { "type": "turning_diameter", "name": "600 HP" },
@@ -117,7 +117,7 @@
       "rent": { "period": "Ao dia", "price": 220 },
       "fuel_type": "hybrid_motor",
       "thumbnail": "https://storage.googleapis.com/golden-wind/ignite/react-native/thumbnails/6.png",
-      "accessories": [
+      "specifications": [
         { "type": "speed", "name": "180km/h" },
         { "type": "acceleration", "name": "2.0s" },
         { "type": "turning_diameter", "name": "600 HP" },
@@ -224,7 +224,7 @@
         "rent": { "period": "Ao dia", "price": 120 },
         "fuel_type": "electric",
         "thumbnail": "https://storage.googleapis.com/golden-wind/ignite/react-native/thumbnails/1.png",
-        "accessories": [
+        "specifications": [
           { "type": "speed", "name": "250km/h" },
           { "type": "acceleration", "name": "3.8s" },
           { "type": "turning_diameter", "name": "800 HP" },
@@ -252,7 +252,7 @@
         "rent": { "period": "Ao dia", "price": 620 },
         "fuel_type": "gasoline_motor",
         "thumbnail": "https://storage.googleapis.com/golden-wind/ignite/react-native/thumbnails/3.png",
-        "accessories": [
+        "specifications": [
           { "type": "speed", "name": "330km/h" },
           { "type": "acceleration", "name": "6.2s" },
           { "type": "turning_diameter", "name": "900 HP" },
@@ -280,7 +280,7 @@
         "rent": { "period": "Ao dia", "price": 120 },
         "fuel_type": "gasoline_motor",
         "thumbnail": "https://storage.googleapis.com/golden-wind/ignite/react-native/thumbnails/5.png",
-        "accessories": [
+        "specifications": [
           { "type": "speed", "name": "180km/h" },
           { "type": "acceleration", "name": "1.5s" },
           { "type": "turning_diameter", "name": "600 HP" },
@@ -308,7 +308,7 @@
         "rent": { "period": "Ao dia", "price": 120 },
         "fuel_type": "electric",
         "thumbnail": "https://storage.googleapis.com/golden-wind/ignite/react-native/thumbnails/1.png",
-        "accessories": [
+        "specifications": [
           { "type": "speed", "name": "250km/h" },
           { "type": "acceleration", "name": "3.8s" },
           { "type": "turning_diameter", "name": "800 HP" },
@@ -336,7 +336,7 @@
         "rent": { "period": "Ao dia", "price": 340 },
         "fuel_type": "gasoline_motor",
         "thumbnail": "https://storage.googleapis.com/golden-wind/ignite/react-native/thumbnails/2.png",
-        "accessories": [
+        "specifications": [
           { "type": "speed", "name": "315km/h" },
           { "type": "acceleration", "name": "2.9s" },
           { "type": "turning_diameter", "name": "700 HP" },
@@ -363,7 +363,7 @@
         "rent": { "period": "Ao dia", "price": 340 },
         "fuel_type": "gasoline_motor",
         "thumbnail": "https://storage.googleapis.com/golden-wind/ignite/react-native/thumbnails/2.png",
-        "accessories": [
+        "specifications": [
           { "type": "speed", "name": "315km/h" },
           { "type": "acceleration", "name": "2.9s" },
           { "type": "turning_diameter", "name": "700 HP" },
@@ -390,7 +390,7 @@
         "rent": { "period": "Ao dia", "price": 340 },
         "fuel_type": "gasoline_motor",
         "thumbnail": "https://storage.googleapis.com/golden-wind/ignite/react-native/thumbnails/2.png",
-        "accessories": [
+        "specifications": [
           { "type": "speed", "name": "315km/h" },
           { "type": "acceleration", "name": "2.9s" },
           { "type": "turning_diameter", "name": "700 HP" },
@@ -417,7 +417,7 @@
         "rent": { "period": "Ao dia", "price": 340 },
         "fuel_type": "gasoline_motor",
         "thumbnail": "https://storage.googleapis.com/golden-wind/ignite/react-native/thumbnails/2.png",
-        "accessories": [
+        "specifications": [
           { "type": "speed", "name": "315km/h" },
           { "type": "acceleration", "name": "2.9s" },
           { "type": "turning_diameter", "name": "700 HP" },
@@ -444,7 +444,7 @@
         "rent": { "period": "Ao dia", "price": 340 },
         "fuel_type": "gasoline_motor",
         "thumbnail": "https://storage.googleapis.com/golden-wind/ignite/react-native/thumbnails/2.png",
-        "accessories": [
+        "specifications": [
           { "type": "speed", "name": "315km/h" },
           { "type": "acceleration", "name": "2.9s" },
           { "type": "turning_diameter", "name": "700 HP" },
@@ -471,7 +471,7 @@
         "rent": { "period": "Ao dia", "price": 340 },
         "fuel_type": "gasoline_motor",
         "thumbnail": "https://storage.googleapis.com/golden-wind/ignite/react-native/thumbnails/2.png",
-        "accessories": [
+        "specifications": [
           { "type": "speed", "name": "315km/h" },
           { "type": "acceleration", "name": "2.9s" },
           { "type": "turning_diameter", "name": "700 HP" },
@@ -498,7 +498,7 @@
         "rent": { "period": "Ao dia", "price": 340 },
         "fuel_type": "gasoline_motor",
         "thumbnail": "https://storage.googleapis.com/golden-wind/ignite/react-native/thumbnails/2.png",
-        "accessories": [
+        "specifications": [
           { "type": "speed", "name": "315km/h" },
           { "type": "acceleration", "name": "2.9s" },
           { "type": "turning_diameter", "name": "700 HP" },
@@ -525,7 +525,7 @@
         "rent": { "period": "Ao dia", "price": 340 },
         "fuel_type": "gasoline_motor",
         "thumbnail": "https://storage.googleapis.com/golden-wind/ignite/react-native/thumbnails/2.png",
-        "accessories": [
+        "specifications": [
           { "type": "speed", "name": "315km/h" },
           { "type": "acceleration", "name": "2.9s" },
           { "type": "turning_diameter", "name": "700 HP" },
@@ -552,7 +552,7 @@
         "rent": { "period": "Ao dia", "price": 340 },
         "fuel_type": "gasoline_motor",
         "thumbnail": "https://storage.googleapis.com/golden-wind/ignite/react-native/thumbnails/2.png",
-        "accessories": [
+        "specifications": [
           { "type": "speed", "name": "315km/h" },
           { "type": "acceleration", "name": "2.9s" },
           { "type": "turning_diameter", "name": "700 HP" },
@@ -579,7 +579,7 @@
         "rent": { "period": "Ao dia", "price": 340 },
         "fuel_type": "gasoline_motor",
         "thumbnail": "https://storage.googleapis.com/golden-wind/ignite/react-native/thumbnails/2.png",
-        "accessories": [
+        "specifications": [
           { "type": "speed", "name": "315km/h" },
           { "type": "acceleration", "name": "2.9s" },
           { "type": "turning_diameter", "name": "700 HP" },
@@ -606,7 +606,7 @@
         "rent": { "period": "Ao dia", "price": 340 },
         "fuel_type": "gasoline_motor",
         "thumbnail": "https://storage.googleapis.com/golden-wind/ignite/react-native/thumbnails/2.png",
-        "accessories": [
+        "specifications": [
           { "type": "speed", "name": "315km/h" },
           { "type": "acceleration", "name": "2.9s" },
           { "type": "turning_diameter", "name": "700 HP" },
@@ -633,7 +633,7 @@
         "rent": { "period": "Ao dia", "price": 340 },
         "fuel_type": "gasoline_motor",
         "thumbnail": "https://storage.googleapis.com/golden-wind/ignite/react-native/thumbnails/2.png",
-        "accessories": [
+        "specifications": [
           { "type": "speed", "name": "315km/h" },
           { "type": "acceleration", "name": "2.9s" },
           { "type": "turning_diameter", "name": "700 HP" },
@@ -660,7 +660,7 @@
         "rent": { "period": "Ao dia", "price": 340 },
         "fuel_type": "gasoline_motor",
         "thumbnail": "https://storage.googleapis.com/golden-wind/ignite/react-native/thumbnails/2.png",
-        "accessories": [
+        "specifications": [
           { "type": "speed", "name": "315km/h" },
           { "type": "acceleration", "name": "2.9s" },
           { "type": "turning_diameter", "name": "700 HP" },
@@ -687,7 +687,7 @@
         "rent": { "period": "Ao dia", "price": 340 },
         "fuel_type": "gasoline_motor",
         "thumbnail": "https://storage.googleapis.com/golden-wind/ignite/react-native/thumbnails/2.png",
-        "accessories": [
+        "specifications": [
           { "type": "speed", "name": "315km/h" },
           { "type": "acceleration", "name": "2.9s" },
           { "type": "turning_diameter", "name": "700 HP" },
@@ -714,7 +714,7 @@
         "rent": { "period": "Ao dia", "price": 340 },
         "fuel_type": "gasoline_motor",
         "thumbnail": "https://storage.googleapis.com/golden-wind/ignite/react-native/thumbnails/2.png",
-        "accessories": [
+        "specifications": [
           { "type": "speed", "name": "315km/h" },
           { "type": "acceleration", "name": "2.9s" },
           { "type": "turning_diameter", "name": "700 HP" },
@@ -741,7 +741,7 @@
         "rent": { "period": "Ao dia", "price": 620 },
         "fuel_type": "gasoline_motor",
         "thumbnail": "https://storage.googleapis.com/golden-wind/ignite/react-native/thumbnails/3.png",
-        "accessories": [
+        "specifications": [
           { "type": "speed", "name": "330km/h" },
           { "type": "acceleration", "name": "6.2s" },
           { "type": "turning_diameter", "name": "900 HP" },
@@ -769,7 +769,7 @@
         "rent": { "period": "Ao dia", "price": 120 },
         "fuel_type": "gasoline_motor",
         "thumbnail": "https://storage.googleapis.com/golden-wind/ignite/react-native/thumbnails/5.png",
-        "accessories": [
+        "specifications": [
           { "type": "speed", "name": "180km/h" },
           { "type": "acceleration", "name": "1.5s" },
           { "type": "turning_diameter", "name": "600 HP" },
@@ -797,7 +797,7 @@
         "rent": { "period": "Ao dia", "price": 120 },
         "fuel_type": "gasoline_motor",
         "thumbnail": "https://storage.googleapis.com/golden-wind/ignite/react-native/thumbnails/5.png",
-        "accessories": [
+        "specifications": [
           { "type": "speed", "name": "180km/h" },
           { "type": "acceleration", "name": "1.5s" },
           { "type": "turning_diameter", "name": "600 HP" },
@@ -825,7 +825,7 @@
         "rent": { "period": "Ao dia", "price": 120 },
         "fuel_type": "electric",
         "thumbnail": "https://storage.googleapis.com/golden-wind/ignite/react-native/thumbnails/1.png",
-        "accessories": [
+        "specifications": [
           { "type": "speed", "name": "250km/h" },
           { "type": "acceleration", "name": "3.8s" },
           { "type": "turning_diameter", "name": "800 HP" },

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { useNavigation } from '@react-navigation/native';
 
-import SpeedSvg from '@assets/svg/speed.svg';
+import { carSpecificationsIcons } from '@utils/carSpecificationsIcons';
 
 import { Button } from '@components/Button';
 import { Column } from '@components/utils/Column';
@@ -26,11 +26,18 @@ import {
   Main,
 } from './styles';
 
-const specifications = [1, 2, 3, 4, 5, 6];
-
 export type CarDetailsRouteParams = {
   startDate?: string;
   endDate?: string;
+  car: {
+    name: string;
+    brand: string;
+    about: string;
+    thumbnail: string;
+    photos: string[];
+    formattedPrice: string;
+    specifications: Array<{ type: string; name: string }>;
+  };
 };
 
 type CarDetailsProps = {
@@ -42,15 +49,17 @@ type CarDetailsProps = {
 export function CarDetails({ route }: CarDetailsProps) {
   const navigation = useNavigation();
 
-  const { startDate, endDate } = route.params;
+  const { startDate, endDate, car } = route.params;
 
   const hasRentTime = !!startDate && !!endDate;
 
   useEffect(() => {
     navigation.setOptions({
-      headerRight: () => <HeaderRightItem dotsQuantity={4} selectedIndex={2} />,
+      headerRight: () => (
+        <HeaderRightItem dotsQuantity={car.photos.length} selectedIndex={0} />
+      ),
     });
-  }, [navigation]);
+  }, [navigation, car.photos.length]);
 
   function handleFooterButtonPress() {
     if (hasRentTime) {
@@ -66,50 +75,42 @@ export function CarDetails({ route }: CarDetailsProps) {
 
       <Container>
         <ImageContainer>
-          <CarImage
-            source={{
-              uri: 'https://res.cloudinary.com/eliasgcf/image/upload/v1632602453/rentx/Lambo_dmkt4f.png',
-            }}
-          />
+          <CarImage source={{ uri: car.photos[0] }} />
         </ImageContainer>
 
         <Main>
           <CarInfo>
             <Column>
-              <LabelText>Lamborghini</LabelText>
-              <CarName>Huracan</CarName>
+              <LabelText>{car.brand}</LabelText>
+              <CarName>{car.name}</CarName>
             </Column>
 
             <Column>
               <LabelText>Ao dia</LabelText>
-              <CarPrice>R$ 580</CarPrice>
+              <CarPrice>{car.formattedPrice}</CarPrice>
             </Column>
           </CarInfo>
 
           <ContentListWrapper>
             <ContentList
-              data={specifications}
-              keyExtractor={(item) => String(item)}
+              data={car.specifications}
+              keyExtractor={(item) => String(item.type)}
               ListFooterComponent={() => {
                 return hasRentTime ? (
                   <ScheduleDetails startDate={startDate} endDate={endDate} />
                 ) : (
-                  <Description>
-                    Este é automóvel desportivo. Surgiu do lendário touro de lide
-                    indultado na praça Real Maestranza de Sevilla. É um belíssimo carro
-                    para quem gosta de acelerar.
-                  </Description>
+                  <Description>{car.about}</Description>
                 );
               }}
-              renderItem={({ index }) => {
+              renderItem={({ item, index }) => {
                 const isLastItemOfRow = index % 3 === 2;
-                const isLastItemOfTotal = index === specifications.length - 1;
+                const isLastItemOfTotal = index === car.specifications.length - 1;
                 const shouldHaveMarginRight = !isLastItemOfRow && !isLastItemOfTotal;
 
                 return (
                   <SpecificationCard
-                    title="380km/h"
-                    icon={SpeedSvg}
+                    title={item.name}
+                    icon={carSpecificationsIcons[item.type]}
                     style={{ marginRight: shouldHaveMarginRight ? 8 : 0 }}
                   />
                 );

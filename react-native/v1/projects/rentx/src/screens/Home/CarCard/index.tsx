@@ -1,23 +1,16 @@
 import React from 'react';
+import { SvgProps } from 'react-native-svg';
 
 import { Column } from '@components/utils/Column';
 import { LabelText } from '@components/LabelText';
 
-import {
-  CarCategoryIconUri,
-  CarImage,
-  CarName,
-  CarPriceText,
-  Container,
-  Footer,
-  Main,
-} from './styles';
+import { CarImage, CarName, CarPriceText, Container, Footer, Main } from './styles';
 
 export type CarCardProps = {
   brand: string;
   name: string;
   formattedPrice: string;
-  categoryIconUrl: string;
+  CategoryIcon: React.FC<SvgProps>;
   imageUrl: string;
   onPress?: () => void;
 };
@@ -26,7 +19,7 @@ export function CarCard({
   brand,
   name,
   formattedPrice,
-  categoryIconUrl,
+  CategoryIcon,
   imageUrl,
   onPress,
 }: CarCardProps) {
@@ -44,7 +37,12 @@ export function CarCard({
             <CarPriceText>{formattedPrice}</CarPriceText>
           </Column>
 
-          <CarCategoryIconUri uri={categoryIconUrl} />
+          <CategoryIcon
+            width={20}
+            height={20}
+            fill="#AEAEB3"
+            style={{ marginLeft: 24 }}
+          />
         </Footer>
       </Main>
 

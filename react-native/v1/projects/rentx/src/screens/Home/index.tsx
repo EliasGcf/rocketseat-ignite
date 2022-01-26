@@ -4,10 +4,14 @@ import { useNavigation } from '@react-navigation/native';
 
 import { api } from '@services/api';
 
+import { formatPrice } from '@utils/formatPrice';
+import { carSpecificationsIcons } from '@utils/carSpecificationsIcons';
+
 import { CarCard } from '@screens/Home/CarCard';
 
 import { Loading } from '@components/Loading';
 import { HomeHeaderText } from '@screens/Home/HomeHeaderText';
+
 import { CarList, Container } from './styles';
 
 export type Car = {
@@ -15,9 +19,12 @@ export type Car = {
   brand: string;
   name: string;
   thumbnail: string;
-  rent: {
-    price: number;
-  };
+  about: string;
+  fuel_type: string;
+  photos: string[];
+  rent: { price: number };
+  formattedPrice: string;
+  specifications: Array<{ type: string; name: string }>;
 };
 
 export function Home() {
@@ -26,17 +33,29 @@ export function Home() {
 
   const navigation = useNavigation();
 
+  function handleOnCardPress(car: Car) {
+    navigation.navigate('CarDetails', {
+      car: { ...car },
+    });
+  }
+
   useEffect(() => {
     async function loadCars() {
       try {
-        const response = await api.get('cars');
+        const response = await api.get<Car[]>('cars');
 
-        setCars(response.data);
+        setCars(
+          response.data.map((car) => ({
+            ...car,
+            formattedPrice: formatPrice(car.rent.price),
+          })),
+        );
 
         navigation.setOptions({
           headerRight: () => <HomeHeaderText totalCars={response.data.length} />,
         });
       } catch (err) {
+        // eslint-disable-next-line no-console
         console.log(err);
       } finally {
         setIsLoading(false);
@@ -60,12 +79,12 @@ export function Home() {
             renderItem={({ item: car }) => (
               <CarCard
                 key={car.id}
-                onPress={() => navigation.navigate('CarDetails', {})}
+                onPress={() => handleOnCardPress(car)}
                 brand={car.brand}
                 name={car.name}
-                formattedPrice="R$ 120"
+                formattedPrice={car.formattedPrice}
                 imageUrl={car.thumbnail}
-                categoryIconUrl="https://res.cloudinary.com/eliasgcf/image/upload/v1632354657/rentx/svg/energy_slf0c5.svg"
+                CategoryIcon={carSpecificationsIcons[car.fuel_type]}
               />
             )}
           />
