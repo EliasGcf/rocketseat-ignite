@@ -1,11 +1,11 @@
-import chromium from 'chrome-aws-lambda';
-import path from 'path';
-import handlebars from 'handlebars';
-import dayjs from 'dayjs';
-import { S3 } from 'aws-sdk';
-import fs from 'fs';
-
+import { APIGatewayProxyHandler } from 'aws-lambda';
 import { document } from '../utils/dynamodbClient';
+import { compile } from 'handlebars';
+import dayjs from 'dayjs';
+import { join } from 'path';
+import { readFileSync } from 'fs';
+import chromium from 'chrome-aws-lambda';
+import { S3 } from 'aws-sdk';
 
 interface ICreateCertificate {
   id: string;
@@ -17,24 +17,24 @@ interface ITemplate {
   id: string;
   name: string;
   grade: string;
-  date: string;
   medal: string;
+  date: string;
 }
 
-const compile = async function (data: ITemplate) {
-  const filePath = path.join(process.cwd(), 'src', 'templates', 'certificate.hbs');
+const compileTemplate = async (data: ITemplate) => {
+  const filePath = join(process.cwd(), 'src', 'templates', 'certificate.hbs');
 
-  const html = fs.readFileSync(filePath, 'utf8');
+  const html = readFileSync(filePath, 'utf8');
 
-  return handlebars.compile(html)(data);
+  return compile(html)(data);
 };
 
-export async function handle(event) {
+export const handler: APIGatewayProxyHandler = async (event) => {
   const { id, name, grade } = JSON.parse(event.body) as ICreateCertificate;
 
   const response = await document
     .query({
-      TableName: 'users_certificates',
+      TableName: 'users_certificate',
       KeyConditionExpression: 'id = :id',
       ExpressionAttributeValues: {
         ':id': id,
@@ -47,31 +47,31 @@ export async function handle(event) {
   if (!userAlreadyExists) {
     await document
       .put({
-        TableName: 'users_certificates',
+        TableName: 'users_certificate',
         Item: {
           id,
           name,
           grade,
+          created_at: new Date().getTime(),
         },
       })
       .promise();
   }
 
-  const medalPath = path.join(process.cwd(), 'src', 'templates', 'selo.png');
-  const medal = fs.readFileSync(medalPath, 'base64');
+  const medalPath = join(process.cwd(), 'src', 'templates', 'selo.png');
+  const medal = readFileSync(medalPath, 'base64');
 
   const data: ITemplate = {
-    date: dayjs().format('DD/MM/YYYY'),
-    grade,
     name,
     id,
+    grade,
+    date: dayjs().format('DD/MM/YYYY'),
     medal,
   };
 
-  const content = await compile(data);
+  const content = await compileTemplate(data);
 
   const browser = await chromium.puppeteer.launch({
-    headless: true,
     args: chromium.args,
     defaultViewport: chromium.defaultViewport,
     executablePath: await chromium.executablePath,
@@ -80,22 +80,27 @@ export async function handle(event) {
   const page = await browser.newPage();
 
   await page.setContent(content);
-
   const pdf = await page.pdf({
     format: 'a4',
     landscape: true,
-    path: process.env.IS_OFFLINE ? 'certificate.pdf' : null,
     printBackground: true,
     preferCSSPageSize: true,
+    path: process.env.IS_OFFLINE ? './certificate.pdf' : null,
   });
 
   await browser.close();
 
   const s3 = new S3();
 
+  // await s3
+  //   .createBucket({
+  //     Bucket: 'certificadoignite2021',
+  //   })
+  //   .promise();
+
   await s3
     .putObject({
-      Bucket: 'Bucket Name', // altere aqui para o nome do seu Bucket
+      Bucket: 'certificadoignite2021',
       Key: `${id}.pdf`,
       ACL: 'public-read',
       Body: pdf,
@@ -106,11 +111,8 @@ export async function handle(event) {
   return {
     statusCode: 201,
     body: JSON.stringify({
-      message: 'Certificate created!',
-      url: `https://bucketurl.s3.amazonaws.com/${id}`,
+      message: 'Certificado criado com sucesso',
+      url: `https://certificadoignite2021.s3.amazonaws.com/${id}.pdf`,
     }),
-    headers: {
-      'Content-Type': 'application/json',
-    },
   };
-}
+};
